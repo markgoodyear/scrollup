@@ -12,12 +12,12 @@ Twitter: @markgdyr
 
 */
 
-;(function ($) {
+;(function($, document, window, undefined) {
 
-	$.scrollUp = function (options) {
+	$.scrollUp = function(opts) {
 
 		// Settings
-		var settings = {
+		var options = {
 			scrollName: 'scrollUp', // Element ID
 			topDistance: '300', // Distance from top before showing element (px)
 			topSpeed: 300, // Speed back to top (ms)
@@ -29,9 +29,7 @@ Twitter: @markgdyr
 		};
 
 		// Load settings
-		if (options) {
-			var settings = $.extend(settings, options);
-		}
+		var settings = $.extend({}, options, opts);
 
 		// Shorthand setting names
 		var sn = '#' + settings.scrollName,
@@ -65,21 +63,17 @@ Twitter: @markgdyr
 		}
 
 		// Scroll funtion
-		$(window).scroll(function(){	
+		$(window).scroll(function(){
 
-			// Fade animation
-			if (an === "fade") {
-				$( ($(window).scrollTop() > td) ? $(sn).fadeIn(is) : $(sn).fadeOut(os) );
-			}
-
-			// SlideUp animation
-			else if (an === "slide") {
-				$( ($(window).scrollTop() > td) ? $(sn).slideDown(is) : $(sn).slideUp(os) );
-			}
-
-			// No animation
-			else {
-				$( ($(window).scrollTop() > td) ? $(sn).show(0) : $(sn).hide(0) );
+			switch (an) {
+				case "fade": // Fade animation
+					$( ($(window).scrollTop() > td) ? $(sn).fadeIn(is) : $(sn).fadeOut(os) );
+					break;
+				case "slide": // SlideUp animation
+					$( ($(window).scrollTop() > td) ? $(sn).slideDown(is) : $(sn).slideUp(os) );
+					break;
+				default: // No animation
+					$( ($(window).scrollTop() > td) ? $(sn).show(0) : $(sn).hide(0) );
 			}
 
 		});
@@ -87,8 +81,8 @@ Twitter: @markgdyr
 		// Back to the top
 		$(sn).click( function(event) {
 		  	$('html, body').animate({scrollTop:0}, ts);
-	        return false;
+	       	event.preventDefault();
 		});
 
 	}; // End scrollUp function
-}(jQuery));
+})(jQuery, document, window);
