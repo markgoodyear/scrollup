@@ -1,3 +1,5 @@
+<h1>ScrollUp 1.1</h2>
+
 <h2>How to use</h2>
 Simply include the <code>jquery.scrollUp.min.js</code> file and place the following in the head of your document (make sure jQuery is included):
 
@@ -9,12 +11,13 @@ Simply include the <code>jquery.scrollUp.min.js</code> file and place the foll
 <pre><code>$(function () {
     $.scrollUp({
         scrollName: 'scrollUp', // Element ID
-        topDistance: '300', // Distance from top before showing element (px)
+        topDistance: 300, // Distance from top before showing element (px)
         topSpeed: 300, // Speed back to top (ms)
         animation: 'fade', // Fade, slide, none
         animationInSpeed: 200, // Animation in speed (ms)
         animationOutSpeed: 200, // Animation out speed (ms)
         scrollText: 'Scroll to top', // Text for element
+        scrollImg: false, // Set true to use image
         activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
     });
 });
@@ -32,6 +35,10 @@ ScrollUp is fully customisable through CSS which makes it simple to fit right in
     padding: 10px 20px;
     background: #555;
     color: #fff;
-}	
+}
 </code></pre>
+
+<strong>Use background image</strong>
+To use a backgroung image instead of text, simple set <code>scrollImg: true</code>. This will allow you to set a background image in your CSS file. 
+
 <a href="http://markgoodyear.com/labs/scrollup/" target="_blank">Check out the demo</a> for more style and feature examples.

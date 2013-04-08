@@ -15,6 +15,7 @@
 	-webkit-transition: background 200ms linear;
 	-moz-transition: background 200ms linear;
 	transition: background 200ms linear;
+	-webkit-backface-visibility: hidden;
 }
 	#scrollUp:hover {
 		background: #000;

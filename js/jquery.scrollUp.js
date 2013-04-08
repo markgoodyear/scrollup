@@ -1,6 +1,6 @@
 /*
 
-scrollUp v1.0.0
+scrollUp v1.1.0
 Author: Mark Goodyear - http://www.markgoodyear.com
 Git: https://github.com/markgoodyear/scrollup
 
@@ -12,83 +12,66 @@ Twitter: @markgdyr
 
 */
 
-;(function ($) {
+;(function($) {
 
 	$.scrollUp = function (options) {
 
-		// Settings
-		var settings = {
+		// Defaults
+		var defaults = {
 			scrollName: 'scrollUp', // Element ID
-			topDistance: '300', // Distance from top before showing element (px)
+			topDistance: 300, // Distance from top before showing element (px)
 			topSpeed: 300, // Speed back to top (ms)
 			animation: 'fade', // Fade, slide, none
 			animationInSpeed: 200, // Animation in speed (ms)
 			animationOutSpeed: 200, // Animation out speed (ms)
 			scrollText: 'Scroll to top', // Text for element
+			scrollImg: false, // Set true to use image
 			activeOverlay: false // Set CSS color to display scrollUp active point, e.g '#00FFFF'
 		};
 
-		// Load settings
-		if (options) {
-			var settings = $.extend(settings, options);
-		}
-
-		// Shorthand setting names
-		var sn = '#' + settings.scrollName,
-			an = settings.animation,
-			os = settings.animationOutSpeed,
-			is = settings.animationInSpeed,
-			td = settings.topDistance,
-			st = settings.scrollText,
-			ts = settings.topSpeed,
-			ao = settings.activeOverlay;
+		var o = $.extend({}, defaults, options),
+			scrollId = '#' + o.scrollName;
 
 		// Create element
 		$('<a/>', {
-		    id: settings.scrollName,
-		    href: '#top',
-		    title: st,
-		    text: st
+			id: o.scrollName,
+			href: '#top',
+			title: o.scrollText
 		}).appendTo('body');
-
-		// Minium CSS to make the magic happen
-		$(sn).css({
-			'display':'none',
-			'position': 'fixed',
-			'z-index': '2147483647'
-		})
-
-		// Active point overlay
-		if (ao) {
-			$("body").append("<div id='"+ settings.scrollName +"-active'></div>");
-			$(sn+"-active").css({ 'position': 'absolute', 'top': td+'px', 'width': '100%', 'border-top': '1px dotted '+ao, 'z-index': '2147483647' })
+		
+		// If not using an image display text
+		if (!o.scrollImg) {
+			$(scrollId).text(o.scrollText);
 		}
 
-		// Scroll funtion
+		// Minium CSS to make the magic happen
+		$(scrollId).css({'display':'none','position': 'fixed','z-index': '2147483647'});
+
+		// Active point overlay
+		if (o.activeOverlay) {
+			$("body").append("<div id='"+ o.scrollName +"-active'></div>");
+			$(scrollId+"-active").css({ 'position': 'absolute', 'top': o.topDistance+'px', 'width': '100%', 'border-top': '1px dotted '+o.activeOverlay, 'z-index': '2147483647' });
+		}
+
+		// Scroll function
 		$(window).scroll(function(){	
-
-			// Fade animation
-			if (an === "fade") {
-				$( ($(window).scrollTop() > td) ? $(sn).fadeIn(is) : $(sn).fadeOut(os) );
+			switch (o.animation) {
+				case "fade":
+					$( ($(window).scrollTop() > o.topDistance) ? $(scrollId).fadeIn(o.animationInSpeed) : $(scrollId).fadeOut(o.animationOutSpeed) );
+					break;
+				case "slide":
+					$( ($(window).scrollTop() > o.topDistance) ? $(scrollId).slideDown(o.animationInSpeed) : $(scrollId).slideUp(o.animationOutSpeed) );
+					break;
+				default:
+					$( ($(window).scrollTop() > o.topDistance) ? $(scrollId).show(0) : $(scrollId).hide(0) );
 			}
-
-			// SlideUp animation
-			else if (an === "slide") {
-				$( ($(window).scrollTop() > td) ? $(sn).slideDown(is) : $(sn).slideUp(os) );
-			}
-
-			// No animation
-			else {
-				$( ($(window).scrollTop() > td) ? $(sn).show(0) : $(sn).hide(0) );
-			}
-
 		});
 
-		// Back to the top
-		$(sn).click( function(event) {
-		  	$('html, body').animate({scrollTop:0}, ts);
-	        return false;
+		// To the top
+		$(scrollId).click( function(event) {
+			$('html, body').animate({scrollTop:0}, o.topSpeed);
+			event.preventDefault();
 		});
 
-	}; // End scrollUp function
-}(jQuery));
+	};
+})(jQuery);
