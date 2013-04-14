@@ -12,26 +12,15 @@ Twitter: @markgdyr
 
 */
 
-;(function($) {
+;(function($, window, document, undefined) {
 
-	$.scrollUp = function (options) {
+	$.fn.scrollUp = function (options) {
 
-		// Defaults
-		var defaults = {
-			scrollName: 'scrollUp', // Element ID
-			topDistance: 300, // Distance from top before showing element (px)
-			topSpeed: 300, // Speed back to top (ms)
-			animation: 'fade', // Fade, slide, none
-			animationInSpeed: 200, // Animation in speed (ms)
-			animationOutSpeed: 200, // Animation out speed (ms)
-			scrollText: 'Scroll to top', // Text for element
-			scrollImg: false, // Set true to use image
-			activeOverlay: false // Set CSS color to display scrollUp active point, e.g '#00FFFF'
-		};
-
-		var o = $.extend({}, defaults, options),
+		var o = $.extend({}, $.fn.scrollUp.defaults, options),
 			scrollId = '#' + o.scrollName;
 
+		$.fn.scrollUp.settings = o;
+		
 		// Create element
 		$('<a/>', {
 			id: o.scrollName,
@@ -74,4 +63,26 @@ Twitter: @markgdyr
 		});
 
 	};
-})(jQuery);
+	
+	// Defaults
+	$.fn.scrollUp.defaults = {
+			scrollName: 'scrollUp', // Element ID
+			topDistance: 300, // Distance from top before showing element (px)
+			topSpeed: 300, // Speed back to top (ms)
+			animation: 'fade', // Fade, slide, none
+			animationInSpeed: 200, // Animation in speed (ms)
+			animationOutSpeed: 200, // Animation out speed (ms)
+			scrollText: 'Scroll to top', // Text for element
+			scrollImg: false, // Set true to use image
+			activeOverlay: false // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+	};
+		
+	// Destroy the instantiated scrollUp plugin and clean up all modifications the widget has made to the DOM
+	$.fn.scrollUp.destroy = function (){
+		$( '#' + $.fn.scrollUp.settings.scrollName ).remove();
+		$( '#' + $.fn.scrollUp.settings.scrollName + '-active' ).remove();
+	};
+	
+	$.scrollUp = $.fn.scrollUp;
+	
+})(jQuery, window, document);

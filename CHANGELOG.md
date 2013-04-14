@@ -1,4 +1,7 @@
 # Changelog
+## 1.1.1
+- Added destroy method.
+- Moved functional declaration to newer supproted plugin format.
 
 ## 1.1
 - Add option for using images (with example)
