@@ -54,7 +54,7 @@ Twitter: @markgdyr
 	};
 
     $.fn.scrollUp.scrollEventFunction = function(){
-        var o = $.fn.scrollUp.defaults, scrollId = '#' + o.scrollName;
+        var o = $.fn.scrollUp.settings, scrollId = '#' + o.scrollName;
         switch (o.animation) {
             case "fade":
                 $( ($(window).scrollTop() > o.topDistance) ? $(scrollId).fadeIn(o.animationInSpeed) : $(scrollId).fadeOut(o.animationOutSpeed) );
