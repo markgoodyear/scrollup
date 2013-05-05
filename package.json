@@ -13,10 +13,16 @@
     "copyright": "Copyright 2013 Mark Goodyear",
     "license": "MIT",
     "readmeFilename": "README.md",
+    "scripts": {
+        "test": "grunt default"
+    },
     "devDependencies": {
         "grunt": "~0.4.1",
         "grunt-contrib-uglify": "~0.2.0",
         "grunt-contrib-jshint": "~0.4.1",
-        "grunt-contrib-clean": "~0.4.0"
+        "grunt-contrib-clean": "~0.4.0",
+        "grunt-contrib-qunit": "~0.1.1",
+        "grunt-contrib-watch": "~0.2.0",
+        "grunt-contrib-concat": "~0.1.2"
     }
 }

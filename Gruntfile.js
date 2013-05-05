@@ -21,7 +21,10 @@ module.exports = function (grunt) {
             'js/jquery.scrollUp.min.js': ['js/jquery.scrollUp.js']
         },
         jshint: {
-            all: [ 'js/jquery.scrollUp.js']
+            all: [ 'js/jquery.scrollUp.js'],
+            options: {
+                jshintrc: '.jshintrc',
+            }
         },
         clean: ['js/jquery.scrollUp.min.js']
     });
