@@ -20,18 +20,19 @@ module.exports = function (grunt) {
             },
             'js/jquery.scrollUp.min.js': ['js/jquery.scrollUp.js']
         },
-        jshint: {
-            all: [ 'js/jquery.scrollUp.js'],
+        plato: {
             options: {
-                jshintrc: '.jshintrc',
-            }
+                jshintrc: '.jshintrc'
+            },
+            'report': ['js/jquery.scrollUp.js']
         },
-        clean: ['js/jquery.scrollUp.min.js']
+        clean: ['js/jquery.scrollUp.min.js','report/']
     });
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-plato');
     grunt.registerTask('default', [ 'clean', 'analysis', 'package']);
-    grunt.registerTask('analysis', [ 'jshint' ]);
+    grunt.registerTask('analysis', [ 'plato' ]);
     grunt.registerTask('package', [ 'uglify' ]);
 };

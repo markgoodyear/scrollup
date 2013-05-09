@@ -12,7 +12,7 @@
 
  */
 
-;(function($, window, document, undefined) {
+;(function($, window) {
 
     $.fn.scrollUp = function (options) {
 
@@ -90,4 +90,4 @@
 
     $.scrollUp = $.fn.scrollUp;
 
-})(jQuery, window, document);
+})(jQuery, window);
