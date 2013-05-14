@@ -21,6 +21,7 @@ Twitter: @markgdyr
 			scrollName: 'scrollUp', // Element ID
 			topDistance: 300, // Distance from top before showing element (px)
 			topSpeed: 300, // Speed back to top (ms)
+			easingType: 'linear', // Scroll to top easing (see http://easings.net/)
 			animation: 'fade', // Fade, slide, none
 			animationInSpeed: 200, // Animation in speed (ms)
 			animationOutSpeed: 200, // Animation out speed (ms)
@@ -38,7 +39,7 @@ Twitter: @markgdyr
 			href: '#top',
 			title: o.scrollText
 		}).appendTo('body');
-		
+
 		// If not using an image display text
 		if (!o.scrollImg) {
 			$(scrollId).text(o.scrollText);
@@ -54,7 +55,7 @@ Twitter: @markgdyr
 		}
 
 		// Scroll function
-		$(window).scroll(function(){	
+		$(window).scroll(function(){
 			switch (o.animation) {
 				case "fade":
 					$( ($(window).scrollTop() > o.topDistance) ? $(scrollId).fadeIn(o.animationInSpeed) : $(scrollId).fadeOut(o.animationOutSpeed) );
@@ -69,7 +70,7 @@ Twitter: @markgdyr
 
 		// To the top
 		$(scrollId).click( function(event) {
-			$('html, body').animate({scrollTop:0}, o.topSpeed);
+			$('html, body').animate({scrollTop:0}, o.topSpeed, o.easingType);
 			event.preventDefault();
 		});
 
