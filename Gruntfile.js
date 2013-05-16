@@ -55,7 +55,7 @@ module.exports = function (grunt) {
                 tasks: [ 'default' ]
             }
         },
-        clean: ['js/jquery.scrollUp.min.js', 'report/']
+        clean: ['js/jquery.scrollUp.min.js']
     });
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-uglify');
