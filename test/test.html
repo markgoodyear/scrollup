@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>scrollup Test Suite</title>
+        <!-- Load local jQuery. This can be overridden with a ?jquery=___ param. -->
+        <script src="/js/lib/jquery-loader.js"></script>
+        <script src="//sinonjs.org/releases/sinon-1.7.1.js"></script>
+        <!-- Load local QUnit. -->
+        <link rel="stylesheet" href="//code.jquery.com/qunit/qunit-1.11.0.css" media="screen">
+        <script src="//code.jquery.com/qunit/qunit-1.11.0.js"></script>
+        <!-- Load local lib and tests. -->
+        <script src="/js/jquery.scrollUp.js"></script>
+        <script src="test.js"></script>
+        <!-- Removing access to jQuery and $. But it'll still be available as _$, if
+             you REALLY want to mess around with jQuery in the console. REMEMBER WE
+             ARE TESTING A PLUGIN HERE, THIS HELPS ENSURE BEST PRACTICES. REALLY. -->
+        <script>window._$ = jQuery.noConflict(true);</script>
+    </head>
+    <body>
+        <div id="qunit"></div>
+        <div id="qunit-fixture"></div>
+    </body>
+</html>

@@ -15,6 +15,14 @@
 ;(function($, window) {
 
     $.fn.scrollUp = function (options) {
+        // Ensure that only one scrollUp exists.
+        if ( ! $.data( document.body, "scrollUp" ) ) {
+            $.data( document.body, "scrollUp", true );
+            $.fn.scrollUp.init(options);
+        }
+    };
+
+    $.fn.scrollUp.init = function(options) {
 
         var o = $.extend({}, $.fn.scrollUp.defaults, options),
             scrollId = "#" + o.scrollName;
@@ -50,7 +58,6 @@
             $("html, body").animate({scrollTop:0}, o.topSpeed);
             event.preventDefault();
         });
-
     };
 
     $.fn.scrollUp.scrollEventFunction = function(){
@@ -83,9 +90,14 @@
 
     // Destroy the instantiated scrollUp plugin and clean up all modifications the widget has made to the DOM
     $.fn.scrollUp.destroy = function (){
+        $.removeData( document.body, "scrollUp" );
         $( "#" + $.fn.scrollUp.settings.scrollName ).remove();
         $( "#" + $.fn.scrollUp.settings.scrollName + "-active" ).remove();
-        $(window).off( "scroll", $.fn.scrollUp.scrollEventFunction );
+        if ($.fn.jquery.split(".")[1] >= 7) {
+            $(window).off( "scroll", $.fn.scrollUp.scrollEventFunction );
+        } else {
+            $(window).unbind( "scroll", $.fn.scrollUp.scrollEventFunction );
+        }
     };
 
     $.scrollUp = $.fn.scrollUp;

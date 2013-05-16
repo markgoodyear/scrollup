@@ -4,21 +4,44 @@ module.exports = function (grunt) {
         uglify: {
             options: {
                 mangle: false,
-                banner: '/*\n'+
-                        '\n'+
-                        ' <%= pkg.name %> <%= pkg.version %>\n'+
-                        ' Author: <%= pkg.author %> - <%= pkg.authorUrl %>\n'+
-                        ' Git: <%= pkg.repository.url %>\n'+
-                        '\n'+
-                        ' <%= pkg.copyright %>\n'+
-                        ' Licensed under the <%= pkg.license %> license\n'+
-                        ' http://www.opensource.org/licenses/mit-license.php\n' +
-                        '\n'+
-                        ' Twitter: <%= pkg.authortwitter %>\n'+
-                        '\n'+
-                        ' */\n'
+                banner: '/*\n' +
+                    '\n' +
+                    ' <%= pkg.name %> <%= pkg.version %>\n' +
+                    ' Author: <%= pkg.author %> - <%= pkg.authorUrl %>\n' +
+                    ' Git: <%= pkg.repository.url %>\n' +
+                    '\n' +
+                    ' <%= pkg.copyright %>\n' +
+                    ' Licensed under the <%= pkg.license %> license\n' +
+                    ' http://www.opensource.org/licenses/mit-license.php\n' +
+                    '\n' +
+                    ' Twitter: <%= pkg.authortwitter %>\n' +
+                    '\n' +
+                    ' */\n'
             },
             'js/jquery.scrollUp.min.js': ['js/jquery.scrollUp.js']
+        },
+        qunit: {
+            all: {
+                options: {
+                    urls: [ '1.9.1', '1.8.3', '1.7.2', '1.6.4', '1.5.2', '1.4.4'  ].map(function (version) {
+                        return 'http://localhost:8000/test/test.html?jquery=' + version;
+                    })
+                }
+            }
+        },
+        connect: {
+            server: {
+                options: {
+                    port: 8000,
+                    base: '.'
+                }
+            }
+        },
+        jshint: {
+            all: [ 'js/jquery.scrollUp.js' ],
+            options: {
+                jshintrc: '.jshintrc'
+            }
         },
         plato: {
             options: {
@@ -26,13 +49,25 @@ module.exports = function (grunt) {
             },
             'report': ['js/jquery.scrollUp.js']
         },
-        clean: ['js/jquery.scrollUp.min.js','report/']
+        watch: {
+            scripts: {
+                files: [ 'test/*.js', 'test/*.html', 'js/*.js', 'Gruntfile.js' ],
+                tasks: [ 'default' ]
+            }
+        },
+        clean: ['js/jquery.scrollUp.min.js', 'report/']
     });
+    grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-qunit');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-plato');
-    grunt.registerTask('default', [ 'clean', 'analysis', 'package']);
-    grunt.registerTask('analysis', [ 'plato' ]);
+
+    grunt.registerTask('default', [ 'clean', 'analysis', 'test', 'package']);
+    grunt.registerTask('analysis', [ 'jshint' ]);
+    grunt.registerTask('report', [ 'plato' ]);
     grunt.registerTask('package', [ 'uglify' ]);
+    grunt.registerTask('test', [ 'connect', 'qunit' ]);
 };
