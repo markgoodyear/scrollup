@@ -42,6 +42,6 @@ ScrollUp is fully customisable through CSS which makes it simple to fit right in
         color: #fff;
     }
 
-** Use background image **
+**Use background image**
 
 To use a background image instead of text, simple set `scrollImg: true`. This will allow you to set a background image in your CSS file. [Check out the demo](http://markgoodyear.com/labs/scrollup/) for more style and feature examples.
