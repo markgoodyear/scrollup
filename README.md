@@ -4,13 +4,13 @@
 ## How to use
 Simply include the `jquery.scrollUp.min.js` file and place the following in the head of your document (make sure jQuery is included):
 
-** Minimum setup **
+**Minimum setup**
 
     $(function () {
         $.scrollUp();
     });
 
-** Example with default options **
+**Example with default options**
 
     $(function () {
         $.scrollUp({
@@ -27,7 +27,7 @@ Simply include the `jquery.scrollUp.min.js` file and place the following in th
         });
     });
 
-** activeOverlay **
+**activeOverlay**
 
 To create a visible line to help determine an ideal scroll distance from the top, assign a valid CSS colour to the `activeOverlay` setting. This could be HEX, HSLA or RGB(A). Example: `activeOverlay: '#00FFFF'`. [See the demo for an example](http://markgoodyear.com/labs/scrollup) .
 
@@ -43,4 +43,5 @@ ScrollUp is fully customisable through CSS which makes it simple to fit right in
     }
 
 ** Use background image **
+
 To use a background image instead of text, simple set `scrollImg: true`. This will allow you to set a background image in your CSS file. [Check out the demo](http://markgoodyear.com/labs/scrollup/) for more style and feature examples.
