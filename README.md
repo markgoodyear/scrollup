@@ -1,7 +1,7 @@
-# ScrollUp 1.1.2
+#ScrollUp 1.1.2
 ![Build Status](https://travis-ci.org/psenger/scrollup.png "Build Status" )
 
-## How to use
+##How to use
 Simply include the `jquery.scrollUp.min.js` file and place the following in the head of your document (make sure jQuery is included):
 
 **Minimum setup**
