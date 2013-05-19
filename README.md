@@ -1,6 +1,7 @@
-#ScrollUp 1.1.2
+#ScrollUp 1.1.3
 ![Build Status](https://travis-ci.org/psenger/scrollup.png "Build Status" )
 
+----
 ##How to use
 Simply include the `jquery.scrollUp.min.js` file and place the following in the head of your document (make sure jQuery is included):
 
@@ -17,6 +18,7 @@ Simply include the `jquery.scrollUp.min.js` file and place the following in th
             scrollName: 'scrollUp', // Element ID
             topDistance: 300, // Distance from top before showing element (px)
             topSpeed: 300, // Speed back to top (ms)
+            easingType: 'linear', // Scroll to top easing (see http://easings.net/ )
             animation: 'fade', // Fade, slide, none
             animationInSpeed: 200, // Animation in speed (ms)
             animationOutSpeed: 200, // Animation out speed (ms)
@@ -31,6 +33,7 @@ Simply include the `jquery.scrollUp.min.js` file and place the following in th
 
 To create a visible line to help determine an ideal scroll distance from the top, assign a valid CSS colour to the `activeOverlay` setting. This could be HEX, HSLA or RGB(A). Example: `activeOverlay: '#00FFFF'`. [See the demo for an example](http://markgoodyear.com/labs/scrollup) .
 
+----
 ##Fully Customisable
 ScrollUp is fully customisable through CSS which makes it simple to fit right into your project. Simply target the scrollUp&rsquo;s generated ID in your CSS file and set your styles. Below is a basic style example:
 
@@ -41,6 +44,8 @@ ScrollUp is fully customisable through CSS which makes it simple to fit right in
         background: #555;
         color: #fff;
     }
+
+Alter the scrolling animation by adding a 'easingType' [see http://easings.net/](http://easings.net/) to the option.
 
 **Use background image**
 

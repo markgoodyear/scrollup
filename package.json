@@ -1,6 +1,6 @@
 {
     "name": "scrollup",
-    "version": "v1.1.2",
+    "version": "v1.1.3",
     "description": "A Jquery Plugin",
     "main": "js/jquery.scrollUp.min.js",
     "repository": {
@@ -17,6 +17,10 @@
         {
             "name": "Philip A Senger",
             "url": "http://www.cngrgroup.com"
+        },
+        {
+            "name": "Allyson Beckers",
+            "url": "http://about.me/allysonbeckers"
         }
     ],
     "keywords": [

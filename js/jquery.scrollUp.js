@@ -1,6 +1,6 @@
 /*
 
- scrollUp v1.1.2
+ scrollUp v1.1.3
  Author: Mark Goodyear - http://www.markgoodyear.com
  Git: https://github.com/markgoodyear/scrollup
 
@@ -55,7 +55,7 @@
 
         // To the top
         $(scrollId).click( function(event) {
-            $("html, body").animate({scrollTop:0}, o.topSpeed);
+            $("html, body").animate({scrollTop:0}, o.topSpeed, o.easingType);
             event.preventDefault();
         });
     };
@@ -79,6 +79,7 @@
         scrollName: "scrollUp", // Element ID
         topDistance: 300, // Distance from top before showing element (px)
         topSpeed: 300, // Speed back to top (ms)
+        easingType: "linear", // Scroll to top easing (see http://easings.net/)
         animation: "fade", // Fade, slide, none
         animationInSpeed: 200, // Animation in speed (ms)
         animationOutSpeed: 200, // Animation out speed (ms)

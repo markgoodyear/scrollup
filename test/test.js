@@ -23,6 +23,7 @@
 
     module('Basic Set Up', {
         setup: function() {
+            $('#qunit-fixture').lorem({ type: 'paragraphs',amount:'40',ptags:true});
         },
         tearDown: function () {
         }
@@ -41,7 +42,7 @@
             scrollText: 'Scroll to top', // Text for element
             activeOverlay: false         // Set CSS color to display scrollUp active point, e.g '#00FFFF'
         });
-        equal ( scrollupInitSpy.callCount, 1 );
+        equal ( scrollupInitSpy.callCount, 1 , 'Confirmed the init method was called once.' );
         $.scrollUp({
             scrollName: 'scrollUp2',      // Element ID
             topDistance: '400',           // Distance from top before showing element (px)
@@ -52,7 +53,7 @@
             scrollText: 'Scroll to down', // Text for element
             activeOverlay: false          // Set CSS color to display scrollUp active point, e.g '#00FFFF'
         });
-        equal ( scrollupInitSpy.callCount, 1 );
+        equal ( scrollupInitSpy.callCount, 1 , 'Confirmed the init method was called once.' );
         $.fn.scrollUp.init.restore(); // Unwraps the spy
         $.scrollUp.destroy();
     });
@@ -87,6 +88,7 @@
 
     module('Basic Functional Test', {
         setup: function() {
+            $('#qunit-fixture').lorem({ type: 'paragraphs',amount:'40',ptags:true});
         },
         tearDown: function () {
         }
@@ -108,44 +110,46 @@
         $.scrollUp(options);
         $(window).trigger('click',{scrollTop:-9999});
         var $elm = $('#' + options.scrollName + ":visible" );
-        notEqual($elm, undefined, 'Clean up of lock down latch');
+        notEqual($elm, undefined, 'button is visible when scrolled down triggered');
         $.scrollUp.destroy();
     });
-/**
- * In progress
- *
-    test( "Verify clicking on the button scroll scrolled to the top", function() {
-        expect( 3 );
-        var scrollupScrollEventFunctionSpy = sinon.spy( $.fn.scrollUp, "scrollEventFunction" ); // spy on the scrollEventFunction method
-        $(window).scrollTop(0).scrollLeft(0);
-        var options = {
-            scrollName: 'scrollUp',      // Element ID
-            topDistance: '300',          // Distance from top before showing element (px)
-            topSpeed: 300,               // Speed back to top (ms)
-            animation: 'fade',           // Fade, slide, none
-            animationInSpeed: 200,       // Animation in speed (ms)
-            animationOutSpeed: 200,      // Animation out speed (ms)
-            scrollText: 'Scroll to top', // Text for element
-            activeOverlay: false         // Set CSS color to display scrollUp active point, e.g '#00FFFF'
-        };
-        var oldReference =  $.fn.scrollTop;
-        $.fn.scrollTop = function(){
-            return 9999;
-        }
-        $.scrollUp(options);
-        $(window).trigger('scroll',{scrollTop:9999});
-        ok ( scrollupScrollEventFunctionSpy.callCount >= 1 , "Scrolling was captured by the event handler");
+    /**
+     *  I cant get the following to work. need some more time.
+     */
+//    test( "Verify clicking on the button scrolls to the top", function() {
+//        expect( 3 );
+//        var scrollupScrollEventFunctionSpy = sinon.spy( $.fn.scrollUp, "scrollEventFunction" ); // spy on the init method
+//        function posTop() {
+//            return typeof window.pageYOffset != 'undefined' ? window.pageYOffset: document.documentElement.scrollTop? document.documentElement.scrollTop: document.body.scrollTop? document.body.scrollTop:0 ;
+//        }
+//        var options = {
+//            scrollName: 'scrollUp',      // Element ID
+//            topDistance: '300',          // Distance from top before showing element (px)
+//            topSpeed: 300,               // Speed back to top (ms)
+//            animation: 'fade',           // Fade, slide, none
+//            animationInSpeed: 200,       // Animation in speed (ms)
+//            animationOutSpeed: 200,      // Animation out speed (ms)
+//            scrollText: 'Scroll to top', // Text for element
+//            activeOverlay: false         // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+//        };
+//        var $elm = $('#' + options.scrollName + ':hidden' );
+//        ok( typeof $elm === 'undefined', 'button is not visible');
+//        $.scrollUp(options);
+//
+//        var e = $.Event("scroll",{scrollTop:999999});
+//        $(window).focus().trigger(e);
+//
+//        $elm = $('#' + options.scrollName + ':visible' );
+//        ok( typeof $elm !== 'undefined', 'button is visible');
+//
+////        var e = $.Event("scroll",{scrollTop:9999});
+////        $(window).focus().trigger(e);
+////        $elm = $('#' + options.scrollName + ":visible" );
+////        notEqual($elm, undefined, 'button is visible when scrolled down triggered');
+////        $elm.trigger('click'); // $(window).scrollTop() > o.topDistance
+////        equal ( posTop(), 0, 'click to scroll up tested' );
+//         ok ( scrollupScrollEventFunctionSpy.called, 'Scroll event function was called at least once.' );
+////        $.scrollUp.destroy();
+//    });
 
-        // equal( $(window).scrollHeight, "dddd"); // jun k
-        var $elm = $('#' + options.scrollName + ":visible" );
-        notEqual($elm, undefined, 'Button is visible');
-
-        $elm.trigger('click'); // $(window).scrollTop() > o.topDistance
-        // equal( $('#qunit-fixture').scrollTop() , 9 , "" );
-        equal ( $elm.scrollTop(), -11, '' );
-
-        $.fn.scrollUp.scrollEventFunction.restore(); // Unwraps the spy
-        $.scrollUp.destroy();
-    });
-**/
 }(jQuery));
