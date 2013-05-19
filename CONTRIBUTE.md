@@ -1,4 +1,3 @@
-
 #Contributing
 
 Hi, if you are reading this you enjoy scroll up and want to contribute. If you really like it you can send some virtual beer to members.
@@ -7,18 +6,15 @@ Hi, if you are reading this you enjoy scroll up and want to contribute. If you r
 
 ###Author
 
-![Mark Goodyear](http://gravatar.com/avatar/511fe713eb87c8fb068fc642c041aa70?s=70)](http://markgoodyear.com/)  
- 
-[Mark Goodyear](http://markgoodyear.com/)  
+[![Mark Goodyear](http://gravatar.com/avatar/511fe713eb87c8fb068fc642c041aa70?s=70)](http://markgoodyear.com/) | 
+--- | --- | --- | --- | --- | --- | ---
+[Mark Goodyear](http://markgoodyear.com/) |  
 
 ###Contributors
-![Philip Senger](http://gravatar.com/avatar/e33eebfa68659d4d6e8e9f014f1ed1fe?s=70)](http://www.cngrgroup.com)
 
-[Philip A Senger](http://www.cngrgroup.com)
-
-![Allyson Beckers](http://gravatar.com/avatar/07f40eac7279db3b8c1807a02b6ea232?s=70)](http://about.me/allysonbeckers)
-
-[Allyson Beckers](http://about.me/allysonbeckers)
+[![Philip A Senger](http://gravatar.com/avatar/e33eebfa68659d4d6e8e9f014f1ed1fe?s=70)](http://www.cngrgroup.com) | [![Allyson Beckers](http://gravatar.com/avatar/07f40eac7279db3b8c1807a02b6ea232?s=70)](http://about.me/allysonbeckers)
+--- | --- | --- | --- | --- | --- | ---
+[Philip A Senger](http://www.cngrgroup.com) | [Allyson Beckers](http://about.me/allysonbeckers)
 
 ##Bugs
 
