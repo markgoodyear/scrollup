@@ -1,6 +1,6 @@
 /*
 
- scrollUp v1.1.3
+ scrollUp v1.1.4
  Author: Mark Goodyear - http://www.markgoodyear.com
  Git: https://github.com/markgoodyear/scrollup
 
@@ -11,9 +11,7 @@
  Twitter: @markgdyr
 
  */
-
 ;(function($, window) {
-
     $.fn.scrollUp = function (options) {
         // Ensure that only one scrollUp exists.
         if ( ! $.data( document.body, "scrollUp" ) ) {
@@ -21,59 +19,43 @@
             $.fn.scrollUp.init(options);
         }
     };
-
     $.fn.scrollUp.init = function(options) {
-
-        var o = $.extend({}, $.fn.scrollUp.defaults, options),
-            scrollId = "#" + o.scrollName;
-
-        $.fn.scrollUp.settings = o;
-
+        // apply any options to the settings, override the defaults.
+        var o = $.fn.scrollUp.settings = $.extend({}, $.fn.scrollUp.defaults, options),
         // Create element
-        $("<a/>", {
-            id: o.scrollName,
-            href: "#top",
-            title: o.scrollText
-        }).appendTo("body");
-
+        $reference = $("<a/>", { id: o.scrollName, href: "#top", title: o.scrollText }).appendTo("body");
         // If not using an image display text
         if (!o.scrollImg) {
-            $(scrollId).text(o.scrollText);
+            $reference.text(o.scrollText);
         }
-
-        // Minium CSS to make the magic happen
-        $(scrollId).css({"display":"none","position": "fixed","z-index": o.zIndex});
-
+        // Minimum CSS to make the magic happen
+        $reference.css({"display":"none","position": "fixed","z-index": o.zIndex});
         // Active point overlay
         if (o.activeOverlay) {
-            $("body").append("<div id='"+ o.scrollName +"-active'></div>");
-            $(scrollId+"-active").css({ "position": "absolute", "top": o.topDistance+"px", "width": "100%", "border-top": "1px dotted "+o.activeOverlay, "z-index": ""+o.zIndex });
+            $("<div/>", { id: o.scrollName + "-active" }).css({ "position": "absolute", "top": o.topDistance + "px", "width": "100%", "border-top": "1px dotted " + o.activeOverlay, "z-index": "" + o.zIndex }).appendTo("body");
         }
-
         // Scroll function
         $(window).scroll($.fn.scrollUp.scrollEventFunction);
-
         // To the top
-        $(scrollId).click( function(event) {
+        $reference.click( function(event) {
             $("html, body").animate({scrollTop:0}, o.topSpeed, o.easingType);
             event.preventDefault();
         });
     };
-
+    // function to be used in the scroll event.
     $.fn.scrollUp.scrollEventFunction = function(){
-        var o = $.fn.scrollUp.settings, scrollId = "#" + o.scrollName;
+        var o = $.fn.scrollUp.settings, $reference = $( "#" + o.scrollName );
         switch (o.animation) {
             case "fade":
-                $( ($(window).scrollTop() > o.topDistance) ? $(scrollId).fadeIn(o.animationInSpeed) : $(scrollId).fadeOut(o.animationOutSpeed) );
+                $( ($(window).scrollTop() > o.topDistance) ? $reference.fadeIn(o.animationInSpeed) : $reference.fadeOut(o.animationOutSpeed) );
                 break;
             case "slide":
-                $( ($(window).scrollTop() > o.topDistance) ? $(scrollId).slideDown(o.animationInSpeed) : $(scrollId).slideUp(o.animationOutSpeed) );
+                $( ($(window).scrollTop() > o.topDistance) ? $reference.slideDown(o.animationInSpeed) : $reference.slideUp(o.animationOutSpeed) );
                 break;
             default:
-                $( ($(window).scrollTop() > o.topDistance) ? $(scrollId).show(0) : $(scrollId).hide(0) );
+                $( ($(window).scrollTop() > o.topDistance) ? $reference.show(0) : $reference.hide(0) );
         }
     };
-
     // Defaults
     $.fn.scrollUp.defaults = {
         scrollName: "scrollUp", // Element ID
@@ -88,7 +70,6 @@
         activeOverlay: false, // Set CSS color to display scrollUp active point, e.g "#00FFFF"
         zIndex: 2147483647 // Z-Index fo the overlay
     };
-
     // Destroy the instantiated scrollUp plugin and clean up all modifications the widget has made to the DOM
     $.fn.scrollUp.destroy = function (){
         $.removeData( document.body, "scrollUp" );
@@ -100,7 +81,5 @@
             $(window).unbind( "scroll", $.fn.scrollUp.scrollEventFunction );
         }
     };
-
     $.scrollUp = $.fn.scrollUp;
-
 })(jQuery, window);

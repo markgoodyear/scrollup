@@ -1,4 +1,12 @@
 # Changelog
+## 1.1.4
+- remove unnecessary lines of code
+- compressed some logic
+- added usage of references and additional jquery chaining
+- changed the build pipeline for default, moving package before test
+- changed the test grunt task to include both full and minified versions of the file in testing.
+- ran plato report.
+
 ## 1.1.3
 - Added easingType
 

@@ -24,8 +24,10 @@ module.exports = function (grunt) {
             all: {
                 options: {
                     urls: [ '1.9.1', '1.8.3', '1.7.2', '1.6.4', '1.5.2', '1.4.4'  ].map(function (version) {
-                        return 'http://localhost:8000/test/test.html?jquery=' + version;
-                    })
+                                return 'http://localhost:8000/test/test.html?jquery=' + version;
+                            }).concat([ '1.9.1', '1.8.3', '1.7.2', '1.6.4', '1.5.2', '1.4.4'  ].map(function (version) {
+                                return 'http://localhost:8000/test/test-min.html?jquery=' + version;
+                            }))
                 }
             }
         },
@@ -65,7 +67,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-plato');
 
-    grunt.registerTask('default', [ 'clean', 'analysis', 'test', 'package']);
+    grunt.registerTask('default', [ 'clean', 'analysis', 'package', 'test' ]);
     grunt.registerTask('analysis', [ 'jshint' ]);
     grunt.registerTask('report', [ 'plato' ]);
     grunt.registerTask('package', [ 'uglify' ]);

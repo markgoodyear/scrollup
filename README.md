@@ -1,4 +1,4 @@
-#ScrollUp 1.1.3
+#ScrollUp 1.1.4
 ![Build Status](https://travis-ci.org/psenger/scrollup.png "Build Status" )
 
 ----
