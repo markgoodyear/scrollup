@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.1.1
+- Fix Firefox bug on tab theme in tab.css
+
 ## 1.1
 - Add option for using images (with example)
 - Code Optimisations
