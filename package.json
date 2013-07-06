@@ -1,0 +1,51 @@
+{
+    "name": "scrollup",
+    "version": "v1.1.4",
+    "description": "A Jquery Plugin",
+    "main": "js/jquery.scrollUp.min.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/markgoodyear/scrollup"
+    },
+    "author": "Mark Goodyear",
+    "authortwitter": "@markgdyr",
+    "authorUrl": "http://www.markgoodyear.com",
+    "copyright": "Copyright 2013 Mark Goodyear",
+    "license": "MIT",
+    "readmeFilename": "README.md",
+    "contributors": [
+        {
+            "name": "Philip A Senger",
+            "url": "http://www.cngrgroup.com"
+        },
+        {
+            "name": "Allyson Beckers",
+            "url": "http://about.me/allysonbeckers"
+        }
+    ],
+    "keywords": [
+        "jquery",
+        "plugin",
+        "Scroll to top",
+        "ScrollUp",
+        "auto scroll",
+        "scroll spy",
+        "to top"
+    ],
+    "scripts": {
+        "test": "grunt default"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.1",
+        "grunt-contrib-uglify": "~0.2.0",
+        "grunt-contrib-jshint": "~0.4.1",
+        "grunt-contrib-connect": "~0.3.0",
+        "grunt-contrib-clean": "~0.4.0",
+        "grunt-contrib-qunit": "~0.1.1",
+        "grunt-contrib-watch": "~0.4.0",
+        "grunt-plato": "~0.2.0"
+    },
+    "engines": {
+        "node": ">=0.10.3"
+    }
+}

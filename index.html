@@ -7,49 +7,152 @@
 
 		<link id="scrollUpTheme" rel="stylesheet" href="css/themes/link.css">
 		<link id="scrollUpTheme" rel="stylesheet" href="css/labs.css">
-
-		<script type="text/javascript" src="js/lib/jquery-1.9.1.min.js"></script>
+        <!-- Load local jQuery. This can be overridden with a ?jquery=___ param. -->
+        <script src="js/lib/jquery-loader.js"></script>
+        <script type="text/javascript" src="js/lib/jquery.easing.min.js"></script>
 		<script type="text/javascript" src="js/jquery.scrollUp.js"></script>
 	</head>
+    <script>
+        $(document).ready(function() {
 
-	<script>
+            /** Parse URL Queries Method */
+            $.getQuery = function (query) {
+                query = query.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+                var expr = "[\\?&]" + query + "=([^&#]*)";
+                var regex = new RegExp(expr);
+                var results = regex.exec(window.location.href);
+                if (results !== null) {
+                    return results[1];
+                    return decodeURIComponent(results[1].replace(/\+/g, " "));
+                } else {
+                    return false;
+                }
+            };
 
-		/* scrollUp Minimum setup */
-		$(function () {
-			$.scrollUp();
-		});
+            /** print the version of jquery */
+            $('#jquery-version').html(jQuery.fn.jquery);
 
-		/* scrollUp full options
-		$(function () {
-			$.scrollUp({
-				scrollName: 'scrollUp',
-				topDistance: '300', // Distance from top before showing element (px)
-				topSpeed: 300, // Speed back to top (ms)
-				animation: 'fade', // Fade, slide, none
-				animationInSpeed: 200, // Animation in speed (ms)
-				animationOutSpeed: 200, // Animation out speed (ms)
-				scrollText: 'Scroll to top', // Text for element
-				scrollImg: false,
-				activeOverlay: false // Set CSS color to display scrollUp active point, e.g '#00FFFF'
-			});
-		});
-		*/
+            var profile = ( console && console.profile && console.profileEnd );
 
-	</script>
-	<body>
-		
-		<div class="header">
-			<a href="http://markgoodyear.com" class="logo">Mark Goodyear</a>
-			<a href="http://markgoodyear.com/2013/01/scrollup-jquery-plugin/" class="view-article">View article</a>
-		</div>
+            /** killswitch */
+            $('#kill-switch').click(function () {
+                if (profile) {
+                    console.profile();
+                }
+                $.scrollUp.destroy();
+                if (profile) {
+                    console.profileEnd();
+                }
+            });
 
-		<div class="container">
-			<h1 class="">
-				scrollUp Demo
-			</h1>
-			<p>ScrollUp is a lightweight jQuery plugin to create a customisable “Scroll to top” feature that will work with any website, with ease.</p>			
-		
-			<h2>Dummy content</h2>
+            /** Change URIs */
+            $('.pill-switch').click(function () {
+                var current_url = window.location.href;
+                window.location = "?theme=pill";
+            });
+            $('.tab-switch').click(function () {
+                var current_url = window.location.href;
+                window.location = "?theme=tab";
+            });
+            $('.image-switch').click(function () {
+                var current_url = window.location.href;
+                window.location = "?theme=image";
+            });
+            $('.link-switch').click(function () {
+                window.location = "?theme=link";
+            });
+
+            /** Set theme based on URI */
+            if ($.getQuery('theme') === 'pill') {
+                $(function () {
+                    if (profile) {
+                        console.profile();
+                    }
+                    $.scrollUp({ animation: 'fade', activeOverlay: '#00FFFF', easingType: 'easeInOutBack' });
+                    if (profile) {
+                        console.profileEnd();
+                    }
+                });
+                $('.pill-switch').addClass('active');
+                $('#scrollUpTheme').attr('href', 'css/themes/pill.css?1.1');
+            } else if ($.getQuery('theme') === 'link') {
+                $(function () {
+                    if (profile) {
+                        console.profile();
+                    }
+                    $.scrollUp({ animation: 'fade', activeOverlay: '#00FFFF', easingType: 'easeOutExpo'});
+                    if (profile) {
+                        console.profileEnd();
+                    }
+                });
+                $('#scrollUpTheme').attr('href', 'css/themes/link.css?1.1');
+                $('.link-switch').addClass('active');
+            } else if ($.getQuery('theme') === 'image') {
+                $(function () {
+                    if (profile) {
+                        console.profile();
+                    }
+                    $.scrollUp({ animation: 'fade', activeOverlay: '#00FFFF', scrollImg: { active: true, type: 'background', src: 'img/top.png' }, easingType: 'easeOutQuint' });
+                    if (profile) {
+                        console.profileEnd();
+                    }
+                });
+                $('#scrollUpTheme').attr('href', 'css/themes/image.css?1.1');
+                $('.image-switch').addClass('active');
+            } else {
+                $(function () {
+                    if (profile) {
+                        console.profile();
+                    }
+                    $.scrollUp({ animation: 'slide', activeOverlay: '#00FFFF' });
+                    if (profile) {
+                        console.profileEnd();
+                    }
+                });
+                $('#scrollUpTheme').attr('href', 'css/themes/tab.css?1.1');
+                $('.tab-switch').addClass('active');
+            }
+
+            /** Toggle overlay */
+            $('#toggleActive').click(function () {
+                $('#scrollUp-active').toggle();
+                var text = $(this).text() == 'Hide activeOverlay' ? 'Show activeOverlay' : 'Hide activeOverlay';
+                $(this).text(text).toggleClass('active');
+            });
+        });
+    </script>
+
+    <body>
+
+        <div class="header">
+            <a href="http://markgoodyear.com" class="logo">Mark Goodyear</a>
+            <a href="http://markgoodyear.com/2013/01/scrollup-jquery-plugin/" class="view-article">View article</a>
+        </div>
+
+        <div class="container">
+        <h1>
+            scrollUp 1.1.4 - Jquery Version<span id='jquery-version'></span>
+        </h1>
+
+        <h2>Demo styles</h2>
+        <ul class="themes">
+            <li class="first"><a href="#" class="tab-switch">Tab</a></li>
+            <li><a href="#" class="pill-switch">Pill</a></li>
+            <li><a href="#" class="link-switch">Link</a></li>
+            <li><a href="#" class="image-switch">Image</a></li>
+        </ul>
+        <em class="light">To test with a different version of JQuery add <code>&jquery=x</code> to the url where x is the version number for example <code>&jquery=1.7.2</code> would load jquery 1.7.2. A full list of versions can be found here <a href="https://developers.google.com/speed/libraries/devguide#jquery">https://developers.google.com/speed/libraries/devguide#jquery</a> </em>
+        <em class="light">Demo styles can be found in the <code>css/themes/</code> folder.</em>
+
+        <h2>activeOverlay Demo</h2>
+
+        <p>For demo purposes, toggle the activeOverlay below.</p>
+        <a id="toggleActive">Show activeOverlay</a>
+
+
+            <div style="clear:both"></div>
+
+            <h2>Dummy content</h2>
 			<p>This is dummy content to ensure the page is long enough to scroll on all screen sizes.</p>
 
 			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
@@ -59,8 +162,8 @@
 			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
 			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
 			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-
+            <ul class="themes"><li><a href="#" id="kill-switch">Destroy</a></li></ul>
 		</div>
-		
+
 	</body>
 </html>	
