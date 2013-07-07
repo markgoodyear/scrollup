@@ -1,0 +1,62 @@
+{
+  "name": "scrollup",
+  "title": "scrollUp",
+  "description": "A jQuery plugin to create a customisable 'Scroll to top' feature that will work with any website, with ease.",
+  "version": "2.0.0",
+  "year": "2013",
+  "keywords": [
+    "jquery",
+    "plugin",
+    "scroll",
+    "scrollUp",
+    "scroll up",
+    "scroll to top",
+    "top",
+    "back to top"
+  ],
+  "authors": [
+    {
+      "name": "Mark Goodyear",
+      "email": "hello@markgoodyear.com",
+      "url": "http://markgoodyear.com",
+      "twitter": "@markgdyr",
+      "github": "https://github.com/markgoodyear"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Philip A Senger",
+      "url": "http://www.cngrgroup.com"
+    },
+    {
+      "name": "Allyson Beckers",
+      "url": "http://about.me/allysonbeckers"
+    }
+  ],
+  "demos": [
+    "http://markgoodyear.com/labs/scrollup/"
+  ],
+  "repositories": [
+    {
+      "type": "Git",
+      "url": "https://github.com/markgoodyear/scrollup"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "homepage": "http://markgoodyear.com/labs/scrollup/",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-jshint": "~0.4.1",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-concat": "~0.3.0"
+  },
+  "engines": {
+    "node": ">=0.10.3"
+  }
+}

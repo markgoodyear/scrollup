@@ -1,16 +1,3 @@
-/*
-
- scrollup v2.0.0
- Author: Mark Goodyear - http://markgoodyear.com
- Git: https://github.com/markgoodyear/scrollup
-
- Copyright 2013 Mark Goodyear.
- Licensed under the MIT license
- http://www.opensource.org/licenses/mit-license.php
-
- Twitter: @markgdyr
-
- */
 (function($, window, document) {
 
     // Main function
