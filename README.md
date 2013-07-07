@@ -52,4 +52,6 @@ To use a background image instead of text, simply set <code>scrollImg: true</cod
 
 <h2>Contributing</h2>
 Please see [CONTRIBUTE.md](CONTRIBUTE.md) for info on contributing.
+
+<h2>Demo</h2>
 <a href="http://markgoodyear.com/labs/scrollup/" target="_blank">Check out the demo</a> for more style and feature examples.
