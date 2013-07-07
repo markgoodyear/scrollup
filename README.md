@@ -30,6 +30,11 @@ Simply include the <code>jquery.scrollUp.min.js</code> file and place the foll
 To create a visible line to help determine an ideal scroll distance from the top, assign a valid CSS colour to the <code>activeOverlay</code> setting. This could be HEX, HSLA or RGB(A). Example: <code>activeOverlay: '#00FFFF'</code>. <a href="http://markgoodyear.com/labs/scrollup" target="_blank">See the demo for an example</a>.
 <p style="text-align: center;"></p>
 
+<strong>scrollFrom</strong>
+
+New feautre in v2.0.0. Display the scrollUp element either the set distance from the top (default), or from the bottom of the page.
+
+
 <h2>Fully Customizable</h2>
 ScrollUp is fully customizable via CSS which makes it simple to fit right into your project. Simply target the scrollUp's generated ID in your CSS file and set your styles. Below is a basic style example:
 <pre><code>#scrollUp {
@@ -42,6 +47,9 @@ ScrollUp is fully customizable via CSS which makes it simple to fit right into y
 </code></pre>
 
 <strong>Use background image</strong>
+
 To use a background image instead of text, simply set <code>scrollImg: true</code>. This will allow you to set a background image in your CSS file.
 
+<h2>Contributing</h2>
+Please see [CONTRIBUTE.md](CONTRIBUTE.md) for info on contributing.
 <a href="http://markgoodyear.com/labs/scrollup/" target="_blank">Check out the demo</a> for more style and feature examples.
