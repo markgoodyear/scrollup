@@ -1,4 +1,4 @@
-<h1>ScrollUp 1.1 [![Build Status](https://travis-ci.org/markgoodyear/scrollup.png?branch=v2)](https://travis-ci.org/markgoodyear/scrollup)</h1>
+# ScrollUp 1.1 [![Build Status](https://travis-ci.org/markgoodyear/scrollup.png?branch=v2)](https://travis-ci.org/markgoodyear/scrollup)
 
 <h2>How to use</h2>
 Simply include the <code>jquery.scrollUp.min.js</code> file and place the following in the head of your document (make sure jQuery is included):
