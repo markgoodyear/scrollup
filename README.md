@@ -1,5 +1,12 @@
 # ScrollUp 2.0.0 [![Build Status](https://travis-ci.org/markgoodyear/scrollup.png?branch=master)](https://travis-ci.org/markgoodyear/scrollup)
 
+<h2>Installing with Bower</h2>
+To install scrollUp with Bower:
+
+```
+bower install scrollup
+```
+
 <h2>How to use</h2>
 Simply include the <code>jquery.scrollUp.min.js</code> file and place the following in the head of your document (make sure jQuery is included):
 
