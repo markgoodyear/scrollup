@@ -1,21 +1,27 @@
 # ScrollUp 2.0.0 [![Build Status](https://travis-ci.org/markgoodyear/scrollup.png?branch=master)](https://travis-ci.org/markgoodyear/scrollup)
 
-<h2>Installing with Bower</h2>
+## Installing with Bower
 To install scrollUp with Bower:
 
 ```
 bower install scrollup
 ```
 
-<h2>How to use</h2>
-Simply include the <code>jquery.scrollUp.min.js</code> file and place the following in the head of your document (make sure jQuery is included):
+## How to use
+Simply include the `jquery.scrollUp.min.js` file and place the following in the head of your document (make sure jQuery is included):
 
-<strong>Minimum setup</strong>
-<pre><code>$(function () {
+### Minimum setup
+
+```
+$(function () {
     $.scrollUp();
-});</code></pre>
-<strong>Example with default options</strong>
-<pre><code>$(function () {
+});
+```
+
+**Example with default options**
+
+```
+$(function () {
     $.scrollUp({
         scrollName: 'scrollUp', // Element ID
         scrollDistance: 300, // Distance from top/bottom before showing element (px)
@@ -31,34 +37,45 @@ Simply include the <code>jquery.scrollUp.min.js</code> file and place the foll
         zIndex: 2147483647 // Z-Index for the overlay
     });
 });
-</code></pre>
-<strong>activeOverlay</strong>
+```
 
-To create a visible line to help determine an ideal scroll distance from the top, assign a valid CSS colour to the <code>activeOverlay</code> setting. This could be HEX, HSLA or RGB(A). Example: <code>activeOverlay: '#00FFFF'</code>. <a href="http://markgoodyear.com/labs/scrollup" target="_blank">See the demo for an example</a>.
+### activeOverlay
+
+To create a visible line to help determine an ideal scroll distance from the top, assign a valid CSS colour to the `activeOverlay` setting. This could be HEX, HSLA or RGB(A). Example: `activeOverlay: '#00FFFF'`. <a href="http://markgoodyear.com/labs/scrollup" target="_blank">See the demo for an example</a>.
 <p style="text-align: center;"></p>
 
-<strong>scrollFrom</strong>
+### scrollFrom
 
 New feautre in v2.0.0. Display the scrollUp element either the set distance from the top (default), or from the bottom of the page.
 
+### Destroy method
 
-<h2>Fully Customizable</h2>
+New feautre in v2.0.0. If you need to destroy the instance of scrollUp, simple use the following to remove all modifications to the DOM:
+
+```
+$.scrollUp.destroy();
+```
+
+
+## Fully Customizable
 ScrollUp is fully customizable via CSS which makes it simple to fit right into your project. Simply target the scrollUp's generated ID in your CSS file and set your styles. Below is a basic style example:
-<pre><code>#scrollUp {
+
+```
+#scrollUp {
     bottom: 20px;
     right: 20px;
     padding: 10px 20px;
     background: #555;
     color: #fff;
 }
-</code></pre>
+```
 
-<strong>Use background image</strong>
+### Use background image
 
-To use a background image instead of text, simply set <code>scrollImg: true</code>. This will allow you to set a background image in your CSS file.
+To use a background image instead of text, simply set `scrollImg: true`. This will allow you to set a background image in your CSS file.
 
-<h2>Contributing</h2>
+## Contributing
 Please see [CONTRIBUTE.md](CONTRIBUTE.md) for info on contributing.
 
-<h2>Demo</h2>
+## Demo
 <a href="http://markgoodyear.com/labs/scrollup/" target="_blank">Check out the demo</a> for more style and feature examples.
