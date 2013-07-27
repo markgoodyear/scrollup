@@ -14,11 +14,14 @@
         // Apply any options to the settings, override the defaults
         var o = $.fn.scrollUp.settings = $.extend({}, $.fn.scrollUp.defaults, options),
 
+        // Set scrollTitle
+        scrollTitle = (o.scrollTitle) ? o.scrollTitle : o.scrollText,
+
         // Create element
         $self = $('<a/>', {
             id: o.scrollName,
             href: '#top',
-            title: o.scrollText
+            title: scrollTitle
         }).appendTo('body');
 
         // If not using an image display text
@@ -80,6 +83,7 @@
         animationInSpeed: 200, // Animation in speed (ms)
         animationOutSpeed: 200, // Animation out speed (ms)
         scrollText: 'Scroll to top', // Text for element, can contain HTML
+        scrollTitle: false, // Set a custom <a> title if required. Defaults to scrollText
         scrollImg: false, // Set true to use image
         activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
         zIndex: 2147483647 // Z-Index for the overlay
