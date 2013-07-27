@@ -1,8 +1,5 @@
 # Changelog
 
-## 2.1.0
-- Add option to set a custom title to the <a> tag
-
 ## 2.0.0
 - Code optimisations
 - Destroy method
