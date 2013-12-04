@@ -18,11 +18,16 @@
         scrollTitle = (o.scrollTitle) ? o.scrollTitle : o.scrollText,
 
         // Create element
-        $self = $('<a/>', {
-            id: o.scrollName,
-            href: '#top',
-            title: scrollTitle
-        }).appendTo('body');
+		if (o.scrollTrigger) {
+			$self = $(o.scrollTrigger);
+		} else {
+	        $self = $('<a/>', {
+	            id: o.scrollName,
+	            href: '#top',
+	            title: scrollTitle
+	        });
+		}
+        $self.appendTo('body');
 
         // If not using an image display text
         if (!o.scrollImg) {
@@ -82,6 +87,7 @@
         animation: 'fade', // Fade, slide, none
         animationInSpeed: 200, // Animation in speed (ms)
         animationOutSpeed: 200, // Animation out speed (ms)
+		scrollTrigger: false, // Set a custom triggering element. Can be an HTML string or jQuery object
         scrollText: 'Scroll to top', // Text for element, can contain HTML
         scrollTitle: false, // Set a custom <a> title if required. Defaults to scrollText
         scrollImg: false, // Set true to use image
