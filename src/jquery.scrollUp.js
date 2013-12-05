@@ -18,6 +18,7 @@
         scrollTitle = (o.scrollTitle) ? o.scrollTitle : o.scrollText,
 
         // Create element
+		$self;
 		if (o.scrollTrigger) {
 			$self = $(o.scrollTrigger);
 		} else {
@@ -30,7 +31,7 @@
         $self.appendTo('body');
 
         // If not using an image display text
-        if (!o.scrollImg) {
+        if (!(o.scrollImg || o.scrollTrigger)) {
             $self.html(o.scrollText);
         }
 
