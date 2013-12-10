@@ -1,6 +1,6 @@
 /*
 
- scrollup v2.1.0
+ scrollup v2.1.1
  Author: Mark Goodyear - http://markgoodyear.com
  Git: https://github.com/markgoodyear/scrollup
 
@@ -81,7 +81,7 @@
             e.preventDefault();
             $('html, body').animate({
                 scrollTop:0
-            }, o.topSpeed, o.easingType);
+            }, o.scrollSpeed, o.easingType);
         });
     };
 

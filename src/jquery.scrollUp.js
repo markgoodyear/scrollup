@@ -68,7 +68,7 @@
             e.preventDefault();
             $('html, body').animate({
                 scrollTop:0
-            }, o.topSpeed, o.easingType);
+            }, o.scrollSpeed, o.easingType);
         });
     };
 
