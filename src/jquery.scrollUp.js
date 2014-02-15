@@ -2,15 +2,17 @@
 
     // Main function
     $.fn.scrollUp = function (options) {
+
         // Ensure that only one scrollUp exists
-        if ( ! $.data( document.body, 'scrollUp' ) ) {
-            $.data( document.body, 'scrollUp', true );
+        if (!$.data(document.body, 'scrollUp')) {
+            $.data(document.body, 'scrollUp', true);
             $.fn.scrollUp.init(options);
         }
     };
 
     // Init
     $.fn.scrollUp.init = function(options) {
+
         // Apply any options to the settings, override the defaults
         var o = $.fn.scrollUp.settings = $.extend({}, $.fn.scrollUp.defaults, options),
 
@@ -49,6 +51,7 @@
 
         // Scroll function
         scrollEvent = $(window).scroll(function() {
+
             // If from top or bottom
             if (o.scrollFrom === 'top') {
                 scrollDis = o.scrollDistance;

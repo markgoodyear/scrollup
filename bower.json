@@ -1,0 +1,14 @@
+{
+  "name": "scrollup",
+  "version": "2.2.0",
+  "main": "js/jquery.scrollUp.js",
+  "ignore": [
+    "css",
+    "img",
+    ".travis.yml",
+    "index.html"
+  ],
+  "dependencies": {
+    "jquery": "1.10.2"
+  }
+}

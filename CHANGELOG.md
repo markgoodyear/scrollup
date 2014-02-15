@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.2.0
+- Allow custom scrollTrigger element
+- Add bower.json
+
+## 2.1.1
+- Bug fixes
+
 ## 2.1.0
 - Add option to set a custom title to the <a> tag
 
