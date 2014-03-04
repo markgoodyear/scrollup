@@ -8,32 +8,31 @@
     <link id="scrollUpTheme" rel="stylesheet" href="css/themes/link.css">
     <link id="scrollUpTheme" rel="stylesheet" href="css/labs.css">
 
-    <script type="text/javascript" src="../js/lib/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="../js/lib/jquery.easing.min.js"></script>
-    <script type="text/javascript" src="../src/jquery.scrollUp.v3.js"></script>
+    <script type="text/javascript" src="../dist/lib/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../dist/lib/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="../src/jquery.scrollUp.js"></script>
 
-
-    <style>
-    .container {
-       height: 300px;
-      overflow: scroll;
-      position: relative;
-    }
-    </style>
   </head>
 
   <script>
 
-    /* scrollUp Minimum setup */
-    // $(function () {
-    //  $.scrollUp();
-    // });
-
     // scrollUp full options
     $(function () {
       $('body').scrollUp({
+
+        // Set element type
         triggerElem: '<a/>',
+
+        /**
+         * triggerInner
+         * Allow any HTML or Text to go inside triggerElem
+         */
         triggerInner: null,
+
+        /**
+         * triggerCss
+         * Can inject styles here, or just use CSS
+         */
         triggerCss: {
             'bottom': '20px',
             'right': '20px',
@@ -42,6 +41,11 @@
             'cursor': 'pointer',
             'background': 'url(./img/top.png) no-repeat',
         },
+
+        /*
+         * triggerAttr
+         * Add any supported jQuery attr() attributes for ultimate customisation
+         */
         triggerAttr: {
             id: 'scrollUp',
             title: 'Scroll to top',
@@ -55,8 +59,8 @@
         triggerOutSpeed: 200,
 
         // Scroll options
-        scrollDistance: 200,
-        // scrollFrom: 'bottom',
+        scrollDistance: 300,
+        scrollFrom: 'top',   // Or `bottom`
         scrollSpeed: 300,
         scrollEasing: 'linear',
 
@@ -67,35 +71,36 @@
          * Custom trigger events
          * Allow full control of animations etc.
          */
-        onTriggerShow: function() {
-          this.fadeIn(200);
-        },
-        onTriggerHide: function() {
-          this.fadeOut(200);
-        },
+        // EXAMPLE:
+        // onTriggerShow: function() {
+        //   this.fadeIn(200);
+        // },
+        // onTriggerHide: function() {
+        //   this.fadeOut(200);
+        // },
 
         /**
          * Custom onTiggerClick
          * Useful to control where to scroll to
          */
+        // EXAMPLE:
         // onTriggerClick: function() {
         //   $('html, body').animate({
         //     scrollTop: $('.container').offset().top
         //   }, 200);
         // }
       });
-      $('body').scrollUp();
-      $('body').scrollUp();
-      $('body').scrollUp();
-      $('body').scrollUp();
-      $('body').scrollUp();
-      $('body').scrollUp();
+
     });
 
     // Destroy example
     $(function(){
       $('.destroy').click(function(){
-        $('body').scrollUp('destroy');
+
+        /**
+         * Destroy method not working yet
+         */
+        alert('Not working in v3, yet.');
       })
     });
 
@@ -125,31 +130,7 @@
       <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
       <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
       <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-
-
-
     </div>
-
-
-    <div class="container">
-      <h1>scrollUp Demo</h1>
-      <p>ScrollUp is a lightweight jQuery plugin to create a customisable “Scroll to top” feature that will work with any website, with ease.</p>
-
-      <h2>Destroy method</h2>
-      <p>Use the button below to test the destroy method. Refresh the page to re-initialise scrollUp.</p>
-      <button class="destroy">DESTROY!</button>
-
-      <h2 id='scroll-back-here'>Dummy content</h2>
-      <p>This is dummy content to ensure the page is long enough to scroll on all screen sizes.</p>
-
-      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-      </div>
 
   </body>
 </html>

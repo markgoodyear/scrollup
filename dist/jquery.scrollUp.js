@@ -1,133 +1,204 @@
-/*
-
- scrollup v2.2.0
- Author: Mark Goodyear - http://markgoodyear.com
- Git: https://github.com/markgoodyear/scrollup
-
- Copyright 2014 Mark Goodyear.
- Licensed under the MIT license
- http://www.opensource.org/licenses/mit-license.php
-
- Twitter: @markgdyr
-
+/*!
+ * scrollup v3.0.0-dev
+ * Author: Mark Goodyear - http://markgoodyear.com — @markgdyr
+ * Git: https://github.com/markgoodyear/scrollup
+ * Copyright 2014, MIT
  */
-(function($, window, document) {
-
-    // Main function
-    $.fn.scrollUp = function (options) {
-
-        // Ensure that only one scrollUp exists
-        if (!$.data(document.body, 'scrollUp')) {
-            $.data(document.body, 'scrollUp', true);
-            $.fn.scrollUp.init(options);
-        }
-    };
-
-    // Init
-    $.fn.scrollUp.init = function(options) {
-
-        // Apply any options to the settings, override the defaults
-        var o = $.fn.scrollUp.settings = $.extend({}, $.fn.scrollUp.defaults, options),
-
-        // Set scrollTitle
-        scrollTitle = (o.scrollTitle) ? o.scrollTitle : o.scrollText,
-
-        // Create element
-		$self;
-		if (o.scrollTrigger) {
-			$self = $(o.scrollTrigger);
-		} else {
-	        $self = $('<a/>', {
-	            id: o.scrollName,
-	            href: '#top',
-	            title: scrollTitle
-	        });
-		}
-        $self.appendTo('body');
-
-        // If not using an image display text
-        if (!(o.scrollImg || o.scrollTrigger)) {
-            $self.html(o.scrollText);
-        }
-
-        // Minimum CSS to make the magic happen
-        $self.css({
-            display: 'none',
-            position: 'fixed',
-            zIndex: o.zIndex
-        });
-
-        // Active point overlay
-        if (o.activeOverlay) {
-            $('<div/>', { id: o.scrollName + '-active' }).css({ position: 'absolute', 'top': o.scrollDistance + 'px', width: '100%', borderTop: '1px dotted' + o.activeOverlay, zIndex: o.zIndex }).appendTo('body');
-        }
-
-        // Scroll function
-        scrollEvent = $(window).scroll(function() {
-
-            // If from top or bottom
-            if (o.scrollFrom === 'top') {
-                scrollDis = o.scrollDistance;
-            } else {
-                scrollDis = $(document).height() - $(window).height() - o.scrollDistance;
-            }
-
-            // Switch animation type
-            switch (o.animation) {
-                case 'fade':
-                    $( ($(window).scrollTop() > scrollDis) ? $self.fadeIn(o.animationInSpeed) : $self.fadeOut(o.animationOutSpeed) );
-                    break;
-                case 'slide':
-                    $( ($(window).scrollTop() > scrollDis) ? $self.slideDown(o.animationInSpeed) : $self.slideUp(o.animationOutSpeed) );
-                    break;
-                default:
-                    $( ($(window).scrollTop() > scrollDis) ? $self.show(0) : $self.hide(0) );
-            }
-        });
-
-        // To the top
-        $self.click(function(e) {
-            e.preventDefault();
-            $('html, body').animate({
-                scrollTop:0
-            }, o.scrollSpeed, o.easingType);
-        });
-    };
+;(function ( $, window, document, undefined ) {
 
     // Defaults
-    $.fn.scrollUp.defaults = {
-        scrollName: 'scrollUp', // Element ID
-        scrollDistance: 300, // Distance from top/bottom before showing element (px)
-        scrollFrom: 'top', // 'top' or 'bottom'
-        scrollSpeed: 300, // Speed back to top (ms)
-        easingType: 'linear', // Scroll to top easing (see http://easings.net/)
-        animation: 'fade', // Fade, slide, none
-        animationInSpeed: 200, // Animation in speed (ms)
-        animationOutSpeed: 200, // Animation out speed (ms)
-		scrollTrigger: false, // Set a custom triggering element. Can be an HTML string or jQuery object
-        scrollText: 'Scroll to top', // Text for element, can contain HTML
-        scrollTitle: false, // Set a custom <a> title if required. Defaults to scrollText
-        scrollImg: false, // Set true to use image
-        activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
-        zIndex: 2147483647 // Z-Index for the overlay
+    var defaults = {
+
+            // Trigger options
+            triggerElem: '<a/>',
+            triggerInner: 'Scroll to Top',
+            triggerCss: {
+                display: 'none',
+                zIndex: 2147483647,
+                position: 'fixed'
+            },
+            triggerAttr: {
+                id: 'scrollUp',
+                title: 'Scroll to top',
+                href: '#top',
+            },
+
+            // Trigger animations
+            triggerIn: 'fadeIn',
+            triggerOut: 'fadeOut',
+            triggerInSpeed: 200,
+            triggerOutSpeed: 200,
+
+            // Scroll options
+            scrollDistance: 400,
+            scrollFrom: 'top',
+            scrollSpeed: 300,
+            scrollEasing: 'linear',
+
+            // Trigger active point, usefull for debuging
+            triggerActivePoint: null,
+
+            // Callbacks
+            onTriggerShow: null,
+            onTriggerHide: null,
+            onTriggerClick: null
+
+        };
+
+    // ScrollUp constructor
+    var ScrollUp = function( element, options ) {
+        this.element = element;
+        this.options = $.extend(true, {}, defaults, options);
+        this.init();
     };
 
-    // Destroy scrollUp plugin and clean all modifications to the DOM
-    $.fn.scrollUp.destroy = function (scrollEvent){
-        $.removeData( document.body, 'scrollUp' );
-        $( '#' + $.fn.scrollUp.settings.scrollName ).remove();
-        $( '#' + $.fn.scrollUp.settings.scrollName + '-active' ).remove();
+    // Check if elem is body
+    var _isBody = function(elem) {
+        return elem.toString() === '[object HTMLBodyElement]';
+    };
 
-        // If 1.7 or above use the new .off()
-        if ($.fn.jquery.split('.')[1] >= 7) {
-            $(window).off( 'scroll', scrollEvent );
+    // Prototype methods
+    ScrollUp.prototype = {
 
-        // Else use the old .unbind()
-        } else {
-            $(window).unbind( 'scroll', scrollEvent );
+        // Init
+        init: function() {
+
+            // Reference this
+            var scope = this;
+
+            // Create trigger element
+            var $triggerElem = $(scope.options.triggerElem)
+                .attr(scope.options.triggerAttr)
+                .css(scope.options.triggerCss)
+                .html(scope.options.triggerInner)
+                .appendTo(scope.element);
+
+            // Define scroll distance
+            var docHeight = (_isBody(scope.element)) ? $(document).height() : scope.element.scrollHeight;
+            var winHeight = (_isBody(scope.element)) ? $(window).height() : $(scope.element).height();
+            var scrollableDis = docHeight - winHeight;
+
+            // Switch scrollFrom & make sure trigger fires when hitting
+            // the bottom if doc height isn't high enough
+            var scrollDis;
+            switch(scope.options.scrollFrom) {
+                case 'top':
+                    scrollDis = (docHeight - winHeight < scope.options.scrollDistance) ? scrollableDis : scope.options.scrollDistance;
+                break;
+                case 'bottom':
+                    scrollDis = (scrollableDis - scope.options.scrollDistance < scope.options.scrollDistance) ? scrollableDis : scrollableDis - scope.options.scrollDistance;
+                break;
+            }
+
+            // Display trigger active point
+            if (scope.options.triggerActivePoint) {
+
+                // If window, attach to body, else attach to scroll element
+                var activeContainer = (scope.element === 'body') ? 'body' : scope.element;
+
+                // Create the trigger active point
+                var $activeElem = $('<div/>')
+                    .attr({
+                        id: scope.options.triggerAttr.id + '-active'
+                    })
+                    .css({
+                        position: 'absolute',
+                        top: scrollDis + 'px',
+                        width: '100%',
+                        borderTop: '1px dotted ' + scope.options.triggerActivePoint,
+                        zIndex: 2147483647
+                    })
+                    .appendTo(activeContainer);
+            }
+
+            // Check if using body or not
+            var scrollAttachment = (_isBody(scope.element)) ? window : scope.element;
+
+            // Scroll Event
+            var scrollEvent = $(scrollAttachment).scroll(function() {
+
+                if ($(scrollAttachment).scrollTop() >= scrollDis) {
+
+                    // Only show when hidden
+                    if ($triggerElem.is(':hidden')) {
+                        if (!scope.options.onTriggerShow) {
+                            $triggerElem[scope.options.triggerIn](scope.options.triggerInSpeed);
+                        } else {
+                            scope.options.onTriggerShow.call($triggerElem);
+                        }
+                    }
+
+                } else {
+
+                    // Only hide when visible
+                    if ($triggerElem.is(':visible')) {
+                        if (!scope.options.onTriggerHide) {
+                            $triggerElem[scope.options.triggerOut](scope.options.triggerOutSpeed);
+                        } else {
+                            scope.options.onTriggerHide.call($triggerElem);
+                        }
+                    }
+                }
+
+            });
+
+            // Click function
+            $triggerElem.on('click', function(e) {
+                e.preventDefault();
+                scope._clickFunc();
+            });
+        },
+
+        _clickFunc: function() {
+
+            if (!this.options.onTriggerClick) {
+
+                // If not using window, set to elem to scroll.attachTo
+                var toScroll = (this.element === 'body') ? 'html, body' : this.element;
+
+                // Animate up
+                $(toScroll).animate({
+                    scrollTop: 0
+                }, this.options.scrollSpeed, this.options.scrollEasing);
+            } else {
+                this.options.onTriggerClick.call();
+            }
+
+        },
+
+        // Destroy
+        destroy: function() {
+
+            /**
+             * @TODO: Need to kill scroll event and remove DOM elements
+             */
         }
     };
 
-    $.scrollUp = $.fn.scrollUp;
 
-})(jQuery, window, document);
+    /**
+     * Plugin wrapper
+     */
+    $.fn.scrollUp = function(options) {
+        if (options === undefined || typeof options === 'object') {
+            return this.each(function () {
+                if (!$.data(this, 'scrollUp')) {
+                    $.data(this, 'scrollUp', new ScrollUp( this, options ));
+                }
+            });
+        } else if (typeof options === 'string' && options[0] !== '_' && options !== 'init') {
+            var returns;
+            this.each(function () {
+                var instance = $.data(this, 'scrollUp');
+                if (instance instanceof Plugin && typeof instance[options] === 'function') {
+                    returns = instance[options].apply( instance, Array.prototype.slice.call( arguments, 1 ) );
+                }
+                if (options === 'destroy') {
+                    $.data(this, 'scrollUp', null);
+                }
+            });
+            return returns !== undefined ? returns : this;
+        }
+    };
+
+}(jQuery, window, document));
