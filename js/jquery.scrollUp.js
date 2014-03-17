@@ -1,6 +1,6 @@
 /*
 
- scrollup v2.2.0
+ scrollup v2.3.0
  Author: Mark Goodyear - http://markgoodyear.com
  Git: https://github.com/markgoodyear/scrollup
 
@@ -85,11 +85,23 @@
             }
         });
 
+        var scrollTarget;
+        if (o.scrollTarget) {
+            if (typeof o.scrollTarget === 'number') {
+                scrollTarget = o.scrollTarget;
+            } else if (typeof o.scrollTarget === 'string') {
+                scrollTarget = Math.floor($(o.scrollTarget).offset().top);
+            }
+        } else {
+            scrollTarget = 0;
+        }
+
         // To the top
         $self.click(function(e) {
             e.preventDefault();
+
             $('html, body').animate({
-                scrollTop:0
+                scrollTop: scrollTarget
             }, o.scrollSpeed, o.easingType);
         });
     };
@@ -104,7 +116,8 @@
         animation: 'fade', // Fade, slide, none
         animationInSpeed: 200, // Animation in speed (ms)
         animationOutSpeed: 200, // Animation out speed (ms)
-		scrollTrigger: false, // Set a custom triggering element. Can be an HTML string or jQuery object
+        scrollTrigger: false, // Set a custom triggering element. Can be an HTML string or jQuery object
+        scrollTarget: false, // Set a custom target element for scrolling to. Can be element or number
         scrollText: 'Scroll to top', // Text for element, can contain HTML
         scrollTitle: false, // Set a custom <a> title if required. Defaults to scrollText
         scrollImg: false, // Set true to use image

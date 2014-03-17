@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.3.0
+- Add custom scrollTarget option to override where to scroll back to
+
 ## 2.2.0
 - Allow custom scrollTrigger element
 - Add bower.json
