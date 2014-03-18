@@ -1,6 +1,6 @@
 /*
 
- scrollup v2.3.0
+ scrollup v2.3.1
  Author: Mark Goodyear - http://markgoodyear.com
  Git: https://github.com/markgoodyear/scrollup
 
@@ -62,26 +62,48 @@
             $('<div/>', { id: o.scrollName + '-active' }).css({ position: 'absolute', 'top': o.scrollDistance + 'px', width: '100%', borderTop: '1px dotted' + o.activeOverlay, zIndex: o.zIndex }).appendTo('body');
         }
 
+        // Switch animation type
+        var animIn, animOut, animSpeed, scrollDis;
+
+        switch (o.animation) {
+            case 'fade':
+                animIn  = 'fadeIn';
+                animOut = 'fadeOut';
+                animSpeed = o.animationInSpeed;
+                break;
+            case 'slide':
+                animIn  = 'slideDown';
+                animOut = 'slideUp';
+                animSpeed = o.animationInSpeed;
+                break;
+            default:
+                animIn  = 'show';
+                animOut = 'hide';
+                animSpeed = 0;
+        }
+
+        // If from top or bottom
+        if (o.scrollFrom === 'top') {
+            scrollDis = o.scrollDistance;
+        } else {
+            scrollDis = $(document).height() - $(window).height() - o.scrollDistance;
+        }
+
+        // Trigger visible false by default
+        var triggerVisible = false;
+
         // Scroll function
         scrollEvent = $(window).scroll(function() {
-
-            // If from top or bottom
-            if (o.scrollFrom === 'top') {
-                scrollDis = o.scrollDistance;
+            if ( $(window).scrollTop() > scrollDis ) {
+                if (!triggerVisible) {
+                    $self[animIn](animSpeed);
+                    triggerVisible = true;
+                }
             } else {
-                scrollDis = $(document).height() - $(window).height() - o.scrollDistance;
-            }
-
-            // Switch animation type
-            switch (o.animation) {
-                case 'fade':
-                    $( ($(window).scrollTop() > scrollDis) ? $self.fadeIn(o.animationInSpeed) : $self.fadeOut(o.animationOutSpeed) );
-                    break;
-                case 'slide':
-                    $( ($(window).scrollTop() > scrollDis) ? $self.slideDown(o.animationInSpeed) : $self.slideUp(o.animationOutSpeed) );
-                    break;
-                default:
-                    $( ($(window).scrollTop() > scrollDis) ? $self.show(0) : $self.hide(0) );
+                if (triggerVisible) {
+                    $self[animOut](animSpeed);
+                    triggerVisible = false;
+                }
             }
         });
 

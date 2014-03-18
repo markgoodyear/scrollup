@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.3.1
+- Update jQuery to 1.11.0
+- Fix bug with jQuery 1.11.0
+- Optimisations
+
 ## 2.3.0
 - Add custom scrollTarget option to override where to scroll back to
 
