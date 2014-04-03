@@ -1,6 +1,6 @@
 /*
 
- scrollup v2.3.1
+ scrollup v2.3.2
  Author: Mark Goodyear - http://markgoodyear.com
  Git: https://github.com/markgoodyear/scrollup
 
@@ -29,9 +29,6 @@
         // Apply any options to the settings, override the defaults
         var o = $.fn.scrollUp.settings = $.extend({}, $.fn.scrollUp.defaults, options),
 
-        // Set scrollTitle
-        scrollTitle = (o.scrollTitle) ? o.scrollTitle : o.scrollText,
-
         // Create element
 		$self;
 		if (o.scrollTrigger) {
@@ -39,10 +36,15 @@
 		} else {
 	        $self = $('<a/>', {
 	            id: o.scrollName,
-	            href: '#top',
-	            title: scrollTitle
+	            href: '#top'
 	        });
 		}
+
+        // Set scrollTitle if there is one
+        if (o.scrollTitle) {
+            $self.attr('title', o.scrollTitle);
+        }
+
         $self.appendTo('body');
 
         // If not using an image display text

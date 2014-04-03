@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.3.2
+- Allow to fully disable scrollTitle
+
 ## 2.3.1
 - Update jQuery to 1.11.0
 - Fix bug with jQuery 1.11.0
