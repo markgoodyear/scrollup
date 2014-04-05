@@ -1,4 +1,4 @@
-# ScrollUp 2.3.2 [![Build Status](https://travis-ci.org/markgoodyear/scrollup.png?branch=master)](https://travis-ci.org/markgoodyear/scrollup)
+# ScrollUp <%= pkg.version %> [![Build Status](https://travis-ci.org/markgoodyear/scrollup.png?branch=master)](https://travis-ci.org/markgoodyear/scrollup)
 
 ## Installing with Bower
 To install scrollUp with Bower:
