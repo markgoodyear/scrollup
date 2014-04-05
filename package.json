@@ -2,7 +2,7 @@
   "name": "scrollup",
   "title": "scrollUp",
   "description": "A jQuery plugin to create a customisable 'Scroll to top' feature that will work with any website, with ease.",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "year": "2014",
   "keywords": [
     "jquery",
@@ -39,6 +39,10 @@
     {
       "name": "Ken Love",
       "url": "https://github.com/freality"
+    },
+    {
+      "name": "Richard Peck",
+      "url": "http://www.frontlineutilities.co.uk"
     }
   ],
   "demos": [
