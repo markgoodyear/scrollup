@@ -1,4 +1,4 @@
-# ScrollUp 2.3.2 [![Build Status](https://travis-ci.org/markgoodyear/scrollup.png?branch=master)](https://travis-ci.org/markgoodyear/scrollup)
+# ScrollUp 2.3.3 [![Build Status](https://travis-ci.org/markgoodyear/scrollup.png?branch=master)](https://travis-ci.org/markgoodyear/scrollup)
 
 ## Installing with Bower
 To install scrollUp with Bower:
@@ -29,8 +29,7 @@ $(function () {
         scrollSpeed: 300, // Speed back to top (ms)
         easingType: 'linear', // Scroll to top easing (see http://easings.net/)
         animation: 'fade', // Fade, slide, none
-        animationInSpeed: 200, // Animation in speed (ms)
-        animationOutSpeed: 200, // Animation out speed (ms)
+        animationSpeed: 200, // Animation speed (ms)
         scrollTrigger: false, // Set a custom triggering element. Can be an HTML string or jQuery object
         scrollTarget: false, // Set a custom target element for scrolling to. Can be element or number
         scrollText: 'Scroll to top', // Text for element, can contain HTML

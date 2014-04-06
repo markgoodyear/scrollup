@@ -9,6 +9,7 @@ Feel free to contribute to this project and help it grow.
 - [Phillip A Senger](https://github.com/psenger)
 - [Allyson Beckers](https://github.com/allybee)
 - [Nick Rameau](https://github.com/NickRameau)
+- [Richard Peck](https://github.com/richpeck)
 
 ## Bugs
 If you find any bugs, please add them to the issues on the GitHub page and give any examples if possible.

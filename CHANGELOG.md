@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.3.3
+- Changed animationInSpeed & animationOutSpeed -> animationSpeed
+
 ## 2.3.2
 - Allow to fully disable scrollTitle
 
