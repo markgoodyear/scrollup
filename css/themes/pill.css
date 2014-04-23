@@ -2,7 +2,7 @@
 #scrollUp {
 	bottom: 20px;
 	right: 20px;
-	background: #555;
+	background-color: #555;
 	color: #fff;
 	font-size: 12px;
 	font-family: sans-serif;
@@ -14,9 +14,11 @@
 	border-radius: 16px;
 	-webkit-transition: background 200ms linear;
 	-moz-transition: background 200ms linear;
+	-o-transition: background 200ms linear;
 	transition: background 200ms linear;
 	-webkit-backface-visibility: hidden;
 }
-	#scrollUp:hover {
-		background: #000;
-	}
+
+#scrollUp:hover {
+	background-color: #000;
+}

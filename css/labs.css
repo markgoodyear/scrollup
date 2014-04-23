@@ -1,15 +1,14 @@
-/* ---------------------------------------- 
+/* ----------------------------------------
 	Labs page main styles
 ---------------------------------------- */
 
 * {
-	-webkit-box-sizing:border-box;
-	-moz-box-sizing:border-box;
-	box-sizing:border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 pre {
-	padding: 0;
 	margin: 0;
 	overflow: scroll;
 	background:#eee;
@@ -19,15 +18,15 @@ pre {
 	-moz-border-radius: 6px;
 	border-radius: 6px;
 }
-	pre .cmt { /* pre comment */
-		color: #aaa;
-	}
-	pre .opt { /* pre option */
-		font-weight:bold;
-	}
-	pre .val { /* pre value */
-		font-style: italic;
-	}
+pre .cmt { /* pre comment */
+	color: #aaa;
+}
+pre .opt { /* pre option */
+	font-weight:bold;
+}
+pre .val { /* pre value */
+	font-style: italic;
+}
 
 code {
 	background: #eee;
@@ -78,8 +77,7 @@ p {
 	color: #FAEFDE;
 	font-weight: bold;
 	-webkit-transition: all 200ms ease-out;
-	-mozilla-transition: all 200ms ease-out;
-	-ms-transition: all 200ms ease-out;
+	-moz-transition: all 200ms ease-out;
 	-o-transition: all 200ms ease-out;
 	transition: all 200ms ease-out;
 }
@@ -102,15 +100,14 @@ p {
 	-moz-border-radius: 6px;
 	border-radius: 6px;
 	-webkit-transition: all 200ms ease-out;
-	-mozilla-transition: all 200ms ease-out;
-	-ms-transition: all 200ms ease-out;
+	-moz-transition: all 200ms ease-out;
 	-o-transition: all 200ms ease-out;
 	transition: all 200ms ease-out;
 }
-	.view-article:hover {
-		color: #111;
-		background: #fff;
-	}
+.view-article:hover {
+	color: #111;
+	background: #fff;
+}
 
 .light {
 	color: #ccc;
@@ -119,7 +116,7 @@ p {
 
 
 
-/* ---------------------------------------- 
+/* ----------------------------------------
 	Lab specific: scrollUp
 ---------------------------------------- */
 
@@ -138,28 +135,27 @@ p {
 	width: 30%;
 	margin-left: 4%;
 }
-	.themes li:first-of-type {
-		margin-left: 0%;
-	}
-	.themes li a {
-		display: block;
-		padding: 10px;
-		background: #444;
-		-webkit-border-radius: 6px;
-		-moz-border-radius: 6px;
-		border-radius: 6px;
-		color: #eee;
-		-webkit-transition: all 200ms ease-out;
-		-mozilla-transition: all 200ms ease-out;
-		-ms-transition: all 200ms ease-out;
-		-o-transition: all 200ms ease-out;
-		transition: all 200ms ease-out;
-	}
-	.themes li a:hover,
-	.themes li a.active  {
-		background: #F66169;
-		color: #FAEFDE;
-	}
+.themes li:first-of-type {
+	margin-left: 0;
+}
+.themes li a {
+	display: block;
+	padding: 10px;
+	background: #444;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	color: #eee;
+	-webkit-transition: all 200ms ease-out;
+	-moz-transition: all 200ms ease-out;
+	-o-transition: all 200ms ease-out;
+	transition: all 200ms ease-out;
+}
+.themes li a:hover,
+.themes li a.active  {
+	background: #F66169;
+	color: #FAEFDE;
+}
 
 #toggleActive {
 	padding: 6px;
@@ -171,18 +167,17 @@ p {
 	font-size: 14px;
 	cursor: pointer;
 	-webkit-transition: all 200ms ease-out;
-	-mozilla-transition: all 200ms ease-out;
-	-ms-transition: all 200ms ease-out;
+	-moz-transition: all 200ms ease-out;
 	-o-transition: all 200ms ease-out;
 	transition: all 200ms ease-out;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	border-radius: 6px;
 }
-	#toggleActive.active {
-		background: #F66169;
-		color: #FAEFDE;
-	}
+#toggleActive.active {
+	background: #F66169;
+	color: #FAEFDE;
+}
 
 #scrollUp-active{
 	display: none;
