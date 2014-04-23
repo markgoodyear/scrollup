@@ -20,11 +20,13 @@ Please log any feature requests in the issues, or create a pull request if you h
 ## Directory Structure
 Project files and folder structure.
 
-* css - CSS for plugin and demo site
-* img - For any images used by the plugin / demo
-* js - Distribution files
-** lib - Any libraries used
-* src - The plugin source which Grunt builds from
+```
++- css          CSS for plugin and demo site
++- img          For any images used by the plugin / demo
++- js           Distribution files
+  +- lib        Any libraries used
++- src          The plugin source which Grunt builds from
+```
 
 ## NodeJS and Grunt
 This project uses [Node JS](http://nodejs.org/) and [Grunt](http://gruntjs.com/).
@@ -36,10 +38,8 @@ When contributing, use the `src/jquery.scrollUp.js` file and run the Grunt tasks
 ## Grunt tasks
 Included Grunt tasks for scrollUp:
 
-* grunt clean
-* grunt jslint - lints the src/jquery.scrollUp.js file
-* grunt conact - creates the distribution (js/jquery.scrollUp.js) file
+* grunt jshint - lints the src/jquery.scrollUp.js file
+* grunt concat - creates the distribution (js/jquery.scrollUp.js) file
 * grunt uglify - creates the minified version in js/*
 
 Use `grunt` to run all tasks together.
-
