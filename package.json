@@ -3,7 +3,32 @@
   "title": "scrollUp",
   "description": "A jQuery plugin to create a customisable 'Scroll to top' feature that will work with any website, with ease.",
   "version": "2.3.3",
-  "year": "2014",
+  "homepage": "http://markgoodyear.com/labs/scrollup/",
+  "author": {
+    "name": "Mark Goodyear",
+    "email": "hello@markgoodyear.com",
+    "url": "http://markgoodyear.com",
+    "twitter": "@markgdyr",
+    "github": "https://github.com/markgoodyear"
+  },
+  "contributors": [
+    "Philip A Senger (http://www.cngrgroup.com)",
+    "Allyson Beckers (http://about.me/allysonbeckers)",
+    "Nick Rameau (https://github.com/NickRameau)",
+    "Ken Love (https://github.com/freality)",
+    "Richard Peck (http://www.frontlineutilities.co.uk)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/markgoodyear/scrollup"
+  },
+  "bugs": {
+    "url": "https://github.com/markgoodyear/scrollup/issues"
+  },
+  "license": {
+    "name": "MIT",
+    "url": "http://opensource.org/licenses/MIT"
+  },
   "keywords": [
     "jquery",
     "plugin",
@@ -14,59 +39,14 @@
     "top",
     "back to top"
   ],
-  "authors": [
-    {
-      "name": "Mark Goodyear",
-      "email": "hello@markgoodyear.com",
-      "url": "http://markgoodyear.com",
-      "twitter": "@markgdyr",
-      "github": "https://github.com/markgoodyear"
-    }
-  ],
-  "contributors": [
-    {
-      "name": "Philip A Senger",
-      "url": "http://www.cngrgroup.com"
-    },
-    {
-      "name": "Allyson Beckers",
-      "url": "http://about.me/allysonbeckers"
-    },
-    {
-      "name": "Nick Rameau",
-      "url": "https://github.com/NickRameau"
-    },
-    {
-      "name": "Ken Love",
-      "url": "https://github.com/freality"
-    },
-    {
-      "name": "Richard Peck",
-      "url": "http://www.frontlineutilities.co.uk"
-    }
-  ],
-  "demos": [
-    "http://markgoodyear.com/labs/scrollup/"
-  ],
-  "repositories": [
-    {
-      "type": "Git",
-      "url": "https://github.com/markgoodyear/scrollup"
-    }
-  ],
-  "licenses": [
-    {
-      "name": "MIT",
-      "url": "http://opensource.org/licenses/MIT"
-    }
-  ],
-  "homepage": "http://markgoodyear.com/labs/scrollup/",
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-uglify": "~0.2.0",
-    "grunt-contrib-jshint": "~0.4.1",
-    "grunt-contrib-clean": "~0.4.0",
-    "grunt-contrib-concat": "~0.3.0"
+    "grunt": "~0.4.5",
+    "grunt-contrib-concat": "~0.4.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-uglify": "~0.5.0"
+  },
+  "scripts": {
+    "test": "grunt test"
   },
   "engines": {
     "node": ">=0.10.3"

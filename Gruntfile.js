@@ -1,68 +1,66 @@
+/* jshint node:true */
+
+'use strict';
+
 module.exports = function (grunt) {
     grunt.initConfig({
+
         pkg: grunt.file.readJSON('package.json'),
-        meta: {
-          banner: '/*\n' +
-            '\n' +
-            ' <%= pkg.name %> v<%= pkg.version %>\n' +
-            ' Author: <%= pkg.authors[0].name %> - <%= pkg.authors[0].url %>\n' +
-            ' <%= pkg.repositories[0].type %>: <%= pkg.repositories[0].url %>\n' +
-            '\n' +
-            ' Copyright <%= pkg.year %> <%= pkg.authors[0].name %>.\n' +
-            ' Licensed under the <%= pkg.licenses[0].name %> license\n' +
-            ' http://www.opensource.org/licenses/mit-license.php\n' +
-            '\n' +
-            ' Twitter: <%= pkg.authors[0].twitter %>\n' +
-            '\n' +
-            ' */\n'
-        },
+        repo: '<%= pkg.repository.type[0].toUpperCase() + pkg.repository.type.slice(1,3) %>',
+        banner: '/*!\n' +
+                ' <%= pkg.name %> v<%= pkg.version %>\n' +
+                ' Author: <%= pkg.author.name %> - <%= pkg.author.url %>\n' +
+                ' <%= repo %>: <%= pkg.repository.url %>\n' +
+                '\n' +
+                ' Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>.\n' +
+                ' Licensed under the <%= pkg.license.name %> license\n' +
+                ' http://www.opensource.org/licenses/mit-license.php\n' +
+                '\n' +
+                ' Twitter: <%= pkg.author.twitter %>\n' +
+                ' */\n\n',
+
         concat: {
-          dist: {
-            src: ["src/jquery.scrollUp.js"],
-            dest: "js/jquery.scrollUp.js"
-          },
-          options: {
-            banner: "<%= meta.banner %>"
-          }
+            options: {
+                banner: '<%= banner %>'
+            },
+            dist: {
+                src: 'src/jquery.scrollUp.js',
+                dest: 'js/jquery.scrollUp.js'
+            }
         },
+
         uglify: {
             options: {
-              // mangle: false,
-              banner: "<%= meta.banner %>"
+                banner: '<%= banner %>'
             },
             'js/jquery.scrollUp.min.js': ['js/jquery.scrollUp.js']
         },
-        jshint: {
-            all: [ 'src/jquery.scrollUp.js' ],
-            options: {
-              "boss": true,
-              "curly": true,
-              "eqeqeq": true,
-              "eqnull": true,
-              "expr": true,
-              "immed": true,
-              "noarg": true,
-              "onevar": false,
-              "quotmark": "single",
-              "smarttabs": true,
-              "trailing": true,
-              "undef": true,
-              "unused": true,
-              "globals": {
-                  "jQuery": true,
-                  "window": true,
-                  "document": true,
-                  "scrollEvent": true,
-                  "scrollDis": true
-              }
-            }
-        },
-        clean: ['js/jquery.scrollUp.min.js', 'js/jquery.scrollUp.js']
-    });
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks("grunt-contrib-concat");
 
-    grunt.registerTask('default', ['clean', 'jshint', 'concat', 'uglify']);
+        jshint: {
+            all: ['Gruntfile.js', 'src/jquery.scrollUp.js'],
+            options: {
+                'browser': true,
+                'curly': true,
+                'eqeqeq': true,
+                'immed': true,
+                'indent': 4,
+                'jquery': true,
+                'noarg': true,
+                'quotmark': 'single',
+                'strict': true,
+                'undef': true,
+                'unused': true,
+                'globals': {
+                    'scrollEvent': true
+                }
+            }
+        }
+    });
+
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+
+    grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
+    grunt.registerTask('test', 'default');
 };
