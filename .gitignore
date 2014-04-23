@@ -3,4 +3,4 @@
 
 # Node modules
 node_modules
-.log
+*.log
