@@ -11,25 +11,28 @@
 pre {
     margin: 0;
     overflow: scroll;
-    background:#eee;
+    background-color: #eee;
 
     padding: 10px;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
 }
+
 pre .cmt { /* pre comment */
     color: #aaa;
 }
+
 pre .opt { /* pre option */
-    font-weight:bold;
+    font-weight: bold;
 }
+
 pre .val { /* pre value */
     font-style: italic;
 }
 
 code {
-    background: #eee;
+    background-color: #eee;
     color: #333;
     display: inline-block;
     padding: 1px 5px;
@@ -39,10 +42,11 @@ body {
     font: 1em/1.8 "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #121212;
     margin: 0;
-    padding:0;
+    padding: 0;
 }
 
 a {
+    color: #F66169;
     text-decoration: none;
 }
 
@@ -66,10 +70,11 @@ p {
     width: 100%;
     height: 60px;
     line-height: 60px;
-    background: #222;
+    background-color: #222;
     color: #fff;
     border-bottom: #F66169 3px solid;
 }
+
 .logo {
     width: 120px;
     float: left;
@@ -81,13 +86,15 @@ p {
     -o-transition: all 200ms ease-out;
     transition: all 200ms ease-out;
 }
+
 .logo:hover {
     color: #fff;
 }
+
 .view-article {
     display: block;
     text-align: center;
-    background: #F66169;
+    background-color: #F66169;
     color: #FAEFDE;
     width: 120px;
     height: 40px;
@@ -104,9 +111,10 @@ p {
     -o-transition: all 200ms ease-out;
     transition: all 200ms ease-out;
 }
+
 .view-article:hover {
     color: #111;
-    background: #fff;
+    background-color: #fff;
 }
 
 .light {
@@ -132,16 +140,18 @@ p {
     text-align: center;
     display: block;
     float: left;
-    width: 30%;
+    width: 22%;
     margin-left: 4%;
 }
-.themes li:first-of-type {
+
+.themes li.first {
     margin-left: 0;
 }
+
 .themes li a {
     display: block;
     padding: 10px;
-    background: #444;
+    background-color: #444;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
@@ -151,18 +161,19 @@ p {
     -o-transition: all 200ms ease-out;
     transition: all 200ms ease-out;
 }
+
 .themes li a:hover,
-.themes li a.active  {
-    background: #F66169;
+.themes li a.active {
+    background-color: #F66169;
     color: #FAEFDE;
 }
 
 #toggleActive {
-    padding: 6px;
-    width: 160px;
+    padding: 10px;
+    width: 100%;
     text-align: center;
     display: inline-block;
-    background: #333;
+    background-color: #444;
     color: #eee;
     font-size: 14px;
     cursor: pointer;
@@ -174,11 +185,12 @@ p {
     -moz-border-radius: 6px;
     border-radius: 6px;
 }
+
 #toggleActive.active {
-    background: #F66169;
+    background-color: #F66169;
     color: #FAEFDE;
 }
 
-#scrollUp-active{
+#scrollUp-active {
     display: none;
 }
