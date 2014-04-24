@@ -1,4 +1,4 @@
-# ScrollUp 2.3.3 [![Build Status](https://travis-ci.org/markgoodyear/scrollup.svg?branch=master)](https://travis-ci.org/markgoodyear/scrollup)
+# ScrollUp 2.3.3 [![Build Status](https://travis-ci.org/markgoodyear/scrollup.svg?branch=master)](https://travis-ci.org/markgoodyear/scrollup) [![devDependency Status](https://david-dm.org/markgoodyear/scrollup/dev-status.svg)](https://david-dm.org/markgoodyear/scrollup#info=devDependencies)
 
 ## Installing with Bower
 
