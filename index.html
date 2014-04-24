@@ -1,153 +1,153 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
 
-		<title>ScrollUp demo - Mark Goodyear</title>
+        <title>ScrollUp demo - Mark Goodyear</title>
 
-		<link id="scrollUpTheme" rel="stylesheet" href="css/themes/tab.css">
-		<link rel="stylesheet" href="css/labs.css">
+        <link id="scrollUpTheme" rel="stylesheet" href="css/themes/tab.css">
+        <link rel="stylesheet" href="css/labs.css">
 
-		<script src="js/lib/jquery-1.11.0.min.js"></script>
-		<script src="js/jquery.scrollUp.min.js"></script>
-		<script>
+        <script src="js/lib/jquery-1.11.0.min.js"></script>
+        <script src="js/jquery.scrollUp.min.js"></script>
+        <script>
 
-			// Parse URL Queries Method
-			(function ($) {
-				$.getQuery = function (query) {
-					query = query.replace(/[\[]/, '\\\[').replace(/[\]]/, '\\\]');
-					var expr = '[\\?&]' + query + '=([^&#]*)';
-					var regex = new RegExp(expr);
-					var results = regex.exec(window.location.href);
-					if (results !== null) {
-						return results[1];
-					} else {
-						return false;
-					}
-				};
-			})(jQuery);
+            // Parse URL Queries Method
+            (function ($) {
+                $.getQuery = function (query) {
+                    query = query.replace(/[\[]/, '\\\[').replace(/[\]]/, '\\\]');
+                    var expr = '[\\?&]' + query + '=([^&#]*)';
+                    var regex = new RegExp(expr);
+                    var results = regex.exec(window.location.href);
+                    if (results !== null) {
+                        return results[1];
+                    } else {
+                        return false;
+                    }
+                };
+            })(jQuery);
 
-			$(function () {
+            $(function () {
 
-				// Change URIs
-				$('.pill-switch').click(function () {
-					window.location = '?theme=pill';
-				});
+                // Change URIs
+                $('.pill-switch').click(function () {
+                    window.location = '?theme=pill';
+                });
 
-				$('.tab-switch').click(function () {
-					window.location = '?theme=tab';
-				});
+                $('.tab-switch').click(function () {
+                    window.location = '?theme=tab';
+                });
 
-				$('.image-switch').click(function () {
-					window.location = '?theme=image';
-				});
+                $('.image-switch').click(function () {
+                    window.location = '?theme=image';
+                });
 
-				$('.link-switch').click(function () {
-					window.location = '?theme=link';
-				});
+                $('.link-switch').click(function () {
+                    window.location = '?theme=link';
+                });
 
-				// Set theme based on URI
-				if ($.getQuery('theme') === 'pill') {
-					$(function () {
-						$.scrollUp({
-							animation: 'fade',
-							activeOverlay: '#00FFFF'
-						});
-					});
-					$('.pill-switch').addClass('active');
-					$('#scrollUpTheme').attr('href', 'css/themes/pill.css?1.1');
-				} else if ($.getQuery('theme') === 'link') {
-					$(function () {
-						$.scrollUp({
-							animation: 'fade',
-							activeOverlay: '#00FFFF'
-						});
-					});
-					$('#scrollUpTheme').attr('href', 'css/themes/link.css?1.1');
-					$('.link-switch').addClass('active');
-				} else if ($.getQuery('theme') === 'image') {
-					$(function () {
-						$.scrollUp({
-							animation: 'fade',
-							activeOverlay: '#00FFFF',
-							scrollImg: {
-								active: true,
-								type: 'background',
-								src: 'img/top.png'
-							}
-						});
-					});
-					$('#scrollUpTheme').attr('href', 'css/themes/image.css?1.1');
-					$('.image-switch').addClass('active');
-				} else {
-					$(function () {
-						$.scrollUp({
-							animation: 'slide',
-							activeOverlay: '#00FFFF'
-						});
-					});
-					$('#scrollUpTheme').attr('href', 'css/themes/tab.css?1.1');
-					$('.tab-switch').addClass('active');
-				}
+                // Set theme based on URI
+                if ($.getQuery('theme') === 'pill') {
+                    $(function () {
+                        $.scrollUp({
+                            animation: 'fade',
+                            activeOverlay: '#00FFFF'
+                        });
+                    });
+                    $('.pill-switch').addClass('active');
+                    $('#scrollUpTheme').attr('href', 'css/themes/pill.css?1.1');
+                } else if ($.getQuery('theme') === 'link') {
+                    $(function () {
+                        $.scrollUp({
+                            animation: 'fade',
+                            activeOverlay: '#00FFFF'
+                        });
+                    });
+                    $('#scrollUpTheme').attr('href', 'css/themes/link.css?1.1');
+                    $('.link-switch').addClass('active');
+                } else if ($.getQuery('theme') === 'image') {
+                    $(function () {
+                        $.scrollUp({
+                            animation: 'fade',
+                            activeOverlay: '#00FFFF',
+                            scrollImg: {
+                                active: true,
+                                type: 'background',
+                                src: 'img/top.png'
+                            }
+                        });
+                    });
+                    $('#scrollUpTheme').attr('href', 'css/themes/image.css?1.1');
+                    $('.image-switch').addClass('active');
+                } else {
+                    $(function () {
+                        $.scrollUp({
+                            animation: 'slide',
+                            activeOverlay: '#00FFFF'
+                        });
+                    });
+                    $('#scrollUpTheme').attr('href', 'css/themes/tab.css?1.1');
+                    $('.tab-switch').addClass('active');
+                }
 
-				// Toggle overlay
+                // Toggle overlay
 
-				$('#toggleActive').click(function () {
-					$('#scrollUp-active').toggle();
+                $('#toggleActive').click(function () {
+                    $('#scrollUp-active').toggle();
 
-					var text = $(this).text() == 'Hide activeOverlay' ? 'Show activeOverlay' : 'Hide activeOverlay';
-					$(this)
-						.text(text)
-						.toggleClass('active');
-				});
+                    var text = $(this).text() == 'Hide activeOverlay' ? 'Show activeOverlay' : 'Hide activeOverlay';
+                    $(this)
+                        .text(text)
+                        .toggleClass('active');
+                });
 
-			});
+            });
 
-		</script>
+        </script>
 
-	</head>
-	<body>
+    </head>
+    <body>
 
-		<div class="header">
-			<a href="http://markgoodyear.com" class="logo">Mark Goodyear</a>
-			<a href="http://markgoodyear.com/2013/01/scrollup-jquery-plugin" class="view-article">View article</a>
-		</div>
+        <div class="header">
+            <a href="http://markgoodyear.com" class="logo">Mark Goodyear</a>
+            <a href="http://markgoodyear.com/2013/01/scrollup-jquery-plugin" class="view-article">View article</a>
+        </div>
 
-		<div class="container">
-			<h1>
-				scrollUp 2.0.0 Demo
-			</h1>
+        <div class="container">
+            <h1>
+                scrollUp 2.0.0 Demo
+            </h1>
 
-			<p>See the <a href="https://github.com/markgoodyear/scrollup/blob/master/CHANGELOG.md" target="_blank">scrollUp v2.0.0 changelog</a> for more information.</p>
+            <p>See the <a href="https://github.com/markgoodyear/scrollup/blob/master/CHANGELOG.md" target="_blank">scrollUp v2.0.0 changelog</a> for more information.</p>
 
-			<h2>Demo styles</h2>
-			<ul class="themes">
-				<li class="first"><a href="#" class="tab-switch">Tab</a></li>
-				<li><a href="#" class="pill-switch">Pill</a></li>
-				<li><a href="#" class="link-switch">Link</a></li>
-				<li><a href="#" class="image-switch">Image</a></li>
-			</ul>
-			<em class="light">Demo styles can be found in the <code>css/themes/</code> folder.</em>
+            <h2>Demo styles</h2>
+            <ul class="themes">
+                <li class="first"><a href="#" class="tab-switch">Tab</a></li>
+                <li><a href="#" class="pill-switch">Pill</a></li>
+                <li><a href="#" class="link-switch">Link</a></li>
+                <li><a href="#" class="image-switch">Image</a></li>
+            </ul>
+            <em class="light">Demo styles can be found in the <code>css/themes/</code> folder.</em>
 
-			<h2>activeOverlay Demo</h2>
-			<p>For demo purposes, toggle the activeOverlay below.</p>
-			<a id="toggleActive">Show activeOverlay</a>
+            <h2>activeOverlay Demo</h2>
+            <p>For demo purposes, toggle the activeOverlay below.</p>
+            <a id="toggleActive">Show activeOverlay</a>
 
 
-			<div style="clear:both"></div>
+            <div style="clear:both"></div>
 
-			<h2>Dummy content</h2>
-			<p><strong>Dummy content to ensure the page is long enough to scroll on all screen sizes.</strong></p>
+            <h2>Dummy content</h2>
+            <p><strong>Dummy content to ensure the page is long enough to scroll on all screen sizes.</strong></p>
 
-			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
 
-		</div>
+        </div>
 
-	</body>
+    </body>
 </html>
