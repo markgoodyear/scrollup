@@ -38,8 +38,8 @@ When contributing, use the `src/jquery.scrollUp.js` file and run the Grunt tasks
 ## Grunt tasks
 Included Grunt tasks for scrollUp:
 
-* grunt jshint - lints the src/jquery.scrollUp.js file
-* grunt concat - creates the distribution (js/jquery.scrollUp.js) file
-* grunt uglify - creates the minified version in js/*
+* `grunt jshint` - lints the src/jquery.scrollUp.js file
+* `grunt concat` - creates the distribution (js/jquery.scrollUp.js) file
+* `grunt uglify` - creates the minified version in js/*
 
 Use `grunt` to run all tasks together.
