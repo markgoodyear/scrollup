@@ -103,7 +103,7 @@
         var triggerVisible = false;
 
         // Scroll function
-        scrollEvent = $(window).scroll(function () {
+        var scrollEvent = $(window).scroll(function () {
             if ($(window).scrollTop() > scrollDis) {
                 if (!triggerVisible) {
                     $self[animIn](animSpeed);
