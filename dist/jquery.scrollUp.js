@@ -1,3 +1,9 @@
+/*!
+ * scrollup v2.3.3
+ * Url: http://markgoodyear.com/labs/scrollup/
+ * Copyright (c) Mark Goodyear — @markgdyr — http://markgoodyear.com
+ * License: MIT
+ */
 (function ($, window, document) {
     'use strict';
 

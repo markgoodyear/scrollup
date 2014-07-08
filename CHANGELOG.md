@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.4.0
+- Code tidy
+- Bug fixes
+- Move to gulp
+
 ## 2.3.3
 - Changed `animationInSpeed` & `animationOutSpeed` -> `animationSpeed`
 
