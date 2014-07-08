@@ -32,3 +32,8 @@ gulp.task('default', function() {
     .pipe(uglify({ preserveComments: 'some' }))
     .pipe(gulp.dest('dist'));
 });
+
+// Watch
+gulp.task('watch', function() {
+  gulp.watch(config.src, ['default']);
+});
