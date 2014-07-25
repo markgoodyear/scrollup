@@ -90,10 +90,21 @@
 
         // Scroll function
         scrollEvent = $(window).scroll(function () {
+        	var scrollPos = $(window).scrollTop();
             if ($(window).scrollTop() > scrollDis) {
                 if (!triggerVisible) {
                     $self[animIn](animSpeed);
                     triggerVisible = true;
+                }else{
+                	if(o.hideWhenStill){
+                    	setTimeout(function(){
+                    		//if scollPos matches current scroll position after hesitation time, apply animout
+                    		if(scrollPos === $(window).scrollTop()){
+                    			$self[animOut](animSpeed);
+                    			triggerVisible = false;
+                    		}
+                    	}, o.hideHesitation);
+                    }
                 }
             } else {
                 if (triggerVisible) {
@@ -132,6 +143,8 @@
         easingType: 'linear',        // Scroll to top easing (see http://easings.net/)
         animation: 'fade',           // Fade, slide, none
         animationSpeed: 200,         // Animation in speed (ms)
+        hideWhenStill: false,		 // Hide element after scroll stops
+        hideHesitation: 2500,		 // Time to leave element visible after scroll stops
         scrollTrigger: false,        // Set a custom triggering element. Can be an HTML string or jQuery object
         scrollTarget: false,         // Set a custom target element for scrolling to. Can be element or number
         scrollText: 'Scroll to top', // Text for element, can contain HTML
