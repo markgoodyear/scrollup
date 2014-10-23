@@ -5,6 +5,7 @@ var header = require('gulp-header');
 var rename = require('gulp-rename');
 var del = require('del');
 var pkg = require('./package.json');
+var copy = require('gulp-copy');
 
 // Banner
 var banner = ['/*!',
@@ -15,10 +16,13 @@ var banner = ['/*!',
     ' */',
     ''].join('\n');
 
-
-// Clean
 gulp.task('clean', function(cb) {
-  del(['dist/*.js'], cb);
+  // Clean dist directory
+  del(['dist/*'], cb);
+  // Copy JS lib to dist directory
+  gulp
+    .src('bower_components/jquery/dist/jquery.min.js')
+    .pipe(copy('dist/lib', { prefix: 3 }));
 });
 
 // Default task
@@ -35,5 +39,5 @@ gulp.task('default', function() {
 
 // Watch
 gulp.task('watch', function() {
-  gulp.watch(config.src, ['default']);
+  gulp.watch('src/*', ['default']);
 });

@@ -1,6 +1,8 @@
 # System files
 .DS_Store
 
-# Node modules
-node_modules
 *.log
+
+# Managers
+node_modules
+bower_components
