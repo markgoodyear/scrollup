@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.4.1
+- Update jQuery dependency
+
 ## 2.4.0
 - Code tidy
 - Bug fixes
