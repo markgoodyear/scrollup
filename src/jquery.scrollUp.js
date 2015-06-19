@@ -96,14 +96,14 @@
                     $self[animIn](animSpeed);
                     triggerVisible = true;
                 }else{
-                	if(o.hideWhenStill){
-                    	setTimeout(function(){
-                    		//if scollPos matches current scroll position after hesitation time, apply animout
-                    		if(scrollPos === $(window).scrollTop()){
-                    			$self[animOut](animSpeed);
-                    			triggerVisible = false;
-                    		}
-                    	}, o.hideHesitation);
+                    if(o.hideWhenStill){
+                        setTimeout(function(){
+                            // If scollPos matches current scroll position after hesitation time, apply animOut.
+                            if(scrollPos === $(window).scrollTop()){
+                                $self[animOut](animSpeed);
+                                triggerVisible = false;
+                            }
+                        }, o.hideHesitation);
                     }
                 }
             } else {
