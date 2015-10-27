@@ -99,6 +99,9 @@
                 if (triggerVisible) {
                     $self[animOut](animSpeed);
                     triggerVisible = false;
+                    if (o.onTopHandler && typeof o.onTopHandler == 'function'){
+                      o.onTopHandler();
+                    }
                 }
             }
         });
@@ -138,7 +141,8 @@
         scrollTitle: false,          // Set a custom <a> title if required. Defaults to scrollText
         scrollImg: false,            // Set true to use image
         activeOverlay: false,        // Set CSS color to display scrollUp active point, e.g '#00FFFF'
-        zIndex: 2147483647           // Z-Index for the overlay
+        zIndex: 2147483647,          // Z-Index for the overlay
+        onTopHandler: null           // Performing when page scroll up
     };
 
     // Destroy scrollUp plugin and clean all modifications to the DOM
