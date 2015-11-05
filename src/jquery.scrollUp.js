@@ -17,7 +17,7 @@
         // Define vars
         var o = $.fn.scrollUp.settings = $.extend({}, $.fn.scrollUp.defaults, options),
             triggerVisible = false,
-            animIn, animOut, animSpeed, scrollDis, scrollEvent, scrollTarget, $self;
+            animIn, animOut, animSpeed, scrollDis, scrollEvent, scrollTarget, $self, originalOffset;
 
         // Create element
         if (o.scrollTrigger) {
@@ -28,6 +28,9 @@
                 href: '#top'
             });
         }
+
+        //Store the bottom offset so we can restore it if we are using offsetBottom
+        originalOffset = $self.css('bottom');
 
         // Set scrollTitle if there is one
         if (o.scrollTitle) {
@@ -101,6 +104,13 @@
                     triggerVisible = false;
                 }
             }
+            if (!o.offsetBottom) { return; }
+            var distanceFromBottom = $(document).height() - ($('body').height() + $('body').scrollTop());
+            if (distanceFromBottom < (o.offsetBottom)) {
+                $self.css('bottom', (o.offsetBottom + $self.height()) - distanceFromBottom);
+            } else {
+                $self.css('bottom', originalOffset);
+            }
         });
 
         if (o.scrollTarget) {
@@ -138,7 +148,8 @@
         scrollTitle: false,          // Set a custom <a> title if required. Defaults to scrollText
         scrollImg: false,            // Set true to use image
         activeOverlay: false,        // Set CSS color to display scrollUp active point, e.g '#00FFFF'
-        zIndex: 2147483647           // Z-Index for the overlay
+        zIndex: 2147483647,          // Z-Index for the overlay
+        offsetBottom: false          // Distance to stop from the bottom of the page
     };
 
     // Destroy scrollUp plugin and clean all modifications to the DOM

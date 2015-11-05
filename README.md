@@ -39,7 +39,8 @@ $(function () {
         scrollTitle: false,          // Set a custom <a> title if required.
         scrollImg: false,            // Set true to use image
         activeOverlay: false,        // Set CSS color to display scrollUp active point, e.g '#00FFFF'
-        zIndex: 2147483647           // Z-Index for the overlay
+        zIndex: 2147483647,          // Z-Index for the overlay
+        offsetBottom: false          // Distance to stop from the bottom of the page
     });
 });
 ```
@@ -55,6 +56,15 @@ Example: `activeOverlay: '#00FFFF'`. <a href="http://markgoodyear.com/labs/scrol
 
 New feature in v2.0.0. Display the `scrollUp` element either the set distance from the top (default),
 or from the bottom of the page.
+
+### offsetBottom
+
+If the site has a footer sometimes it can look a little cleaner if the scroll to top button stops
+just before it. Just set `offsetBottom` to the height of the footer.
+```js
+offsetBottom: 200
+```
+
 
 ### Destroy method
 
