@@ -19,6 +19,6 @@
   "strict": false,
   "trailing": false,
   "globals": {
-    "jQuery": true
+    "define": true
   }
 }

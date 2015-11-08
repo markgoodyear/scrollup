@@ -1,5 +1,5 @@
 /*---------------------------------------*\
- * ScrollUp Tab Theme.
+ * ScrollUp Font Icon Theme.
 \*---------------------------------------*/
 
 /**
@@ -35,16 +35,14 @@
 }
 
 /**
- * Hover.
- */
-#scrollup:hover {
-  bottom: 10px;
-}
-
-/**
- * ScrollUp's `init` class. Applied when ScrollUp is first activated.
- * This is where you set the trigger visible.
+ * ScrollUp's `init` class.
+ * Is applied when ScrollUp is first activated.
  */
 #scrollup.animated {
+
+  /**
+   * ScrollUp's `init` class. Applied when ScrollUp is first activated.
+   * This is where you set the trigger visible.
+   */
   display: block;
 }

@@ -4,3 +4,7 @@
 # Node modules
 node_modules
 *.log
+
+# Local dev testing
+local/
+src/local/

@@ -5,11 +5,12 @@ var header = require('gulp-header');
 var rename = require('gulp-rename');
 var del = require('del');
 var pkg = require('./package.json');
+var plumber = require('gulp-plumber');
 
 // Banner
 var banner = ['/*!',
     ' * <%= pkg.name %> v<%= pkg.version %>',
-    ' * Url: <%= pkg.homepage %>',
+    ' * <%= pkg.homepage %>',
     ' * Copyright (c) <%= pkg.author.name %> — <%= pkg.author.twitter %> — <%= pkg.author.url %>',
     ' * License: <%= pkg.license.name %>',
     ' */',
@@ -17,13 +18,14 @@ var banner = ['/*!',
 
 
 // Clean
-gulp.task('clean', function(cb) {
+gulp.task('clean', function (cb) {
   del(['dist/*.js'], cb);
 });
 
 // Default task
-gulp.task('default', function() {
-  return gulp.src('src/*.js')
+gulp.task('default', function () {
+  return gulp.src('src/scrollup.js')
+    .pipe(plumber())
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(header(banner, { pkg: pkg }))
@@ -34,6 +36,6 @@ gulp.task('default', function() {
 });
 
 // Watch
-gulp.task('watch', function() {
-  gulp.watch(config.src, ['default']);
+gulp.task('watch', function () {
+  gulp.watch('src/*.js', ['default']);
 });

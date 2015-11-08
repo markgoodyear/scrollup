@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.0.0
+- Major rewrite, no jQuery dependency
+
 ## 2.4.0
 - Code tidy
 - Bug fixes

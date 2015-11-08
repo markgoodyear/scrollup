@@ -1,5 +1,30 @@
-/* Text link style */
-#scrollUp {
-    bottom: 20px;
-    right: 20px;
+/*---------------------------------------*\
+ * ScrollUp Link Theme.
+\*---------------------------------------*/
+
+/**
+ * Main element.
+ */
+#scrollup {
+
+  /* Initial state is hidden to avoid FOUC. Use the ScrollUp's `init` class to show. */
+  display: none;
+
+  /* Core styles */
+  position: fixed;
+  z-index: 1000;
+
+  /* Theme styles */
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
 }
+
+/**
+ * ScrollUp's `init` class. Applied when ScrollUp is first activated.
+ * This is where you set the trigger visible.
+ */
+#scrollup.animated {
+  display: block;
+}
+

@@ -6,143 +6,152 @@
 
         <link id="scrollUpTheme" rel="stylesheet" href="css/themes/tab.css">
         <link rel="stylesheet" href="css/labs.css">
-
-        <script src="../dist/lib/jquery-1.11.1.min.js"></script>
-        <script src="../dist/jquery.scrollUp.min.js"></script>
-        <script>
-
-            // Parse URL Queries Method
-            (function ($) {
-                $.getQuery = function (query) {
-                    query = query.replace(/[\[]/, '\\\[').replace(/[\]]/, '\\\]');
-                    var expr = '[\\?&]' + query + '=([^&#]*)';
-                    var regex = new RegExp(expr);
-                    var results = regex.exec(window.location.href);
-                    if (results !== null) {
-                        return results[1];
-                    } else {
-                        return false;
-                    }
-                };
-            })(jQuery);
-
-            $(function () {
-
-                // Change URIs
-                $('.pill-switch').click(function () {
-                    window.location = '?theme=pill';
-                });
-
-                $('.tab-switch').click(function () {
-                    window.location = '?theme=tab';
-                });
-
-                $('.image-switch').click(function () {
-                    window.location = '?theme=image';
-                });
-
-                $('.link-switch').click(function () {
-                    window.location = '?theme=link';
-                });
-
-                // Set theme based on URI
-                if ($.getQuery('theme') === 'pill') {
-                    $(function () {
-                        $.scrollUp({
-                            animation: 'fade',
-                            activeOverlay: '#00FFFF'
-                        });
-                    });
-                    $('.pill-switch').addClass('active');
-                    $('#scrollUpTheme').attr('href', 'css/themes/pill.css?1.1');
-                } else if ($.getQuery('theme') === 'link') {
-                    $(function () {
-                        $.scrollUp({
-                            animation: 'fade',
-                            activeOverlay: '#00FFFF'
-                        });
-                    });
-                    $('#scrollUpTheme').attr('href', 'css/themes/link.css?1.1');
-                    $('.link-switch').addClass('active');
-                } else if ($.getQuery('theme') === 'image') {
-                    $(function () {
-                        $.scrollUp({
-                            animation: 'fade',
-                            activeOverlay: '#00FFFF',
-                            scrollImg: {
-                                active: true,
-                                type: 'background',
-                                src: 'img/top.png'
-                            }
-                        });
-                    });
-                    $('#scrollUpTheme').attr('href', 'css/themes/image.css?1.1');
-                    $('.image-switch').addClass('active');
-                } else {
-                    $(function () {
-                        $.scrollUp({
-                            animation: 'slide',
-                            activeOverlay: '#00FFFF'
-                        });
-                    });
-                    $('#scrollUpTheme').attr('href', 'css/themes/tab.css?1.1');
-                    $('.tab-switch').addClass('active');
-                }
-
-                // Toggle overlay
-                $('#toggleActive').click(function () {
-                    $('#scrollUp-active').toggle();
-
-                    var text = $(this).text() == 'Hide activeOverlay' ? 'Show activeOverlay' : 'Hide activeOverlay';
-                    $(this)
-                        .text(text)
-                        .toggleClass('active');
-                });
-            });
-
-        </script>
-
+        <link rel="stylesheet" href="css/animate.css">
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,500italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
     </head>
     <body>
 
         <div class="header">
             <a href="http://markgoodyear.com" class="logo">Mark Goodyear</a>
-            <a href="http://markgoodyear.com/2013/01/scrollup-jquery-plugin" class="view-article">View article</a>
+
+            <div class="social">
+                <a class="github-button" href="https://github.com/markgoodyear/scrollup" data-icon="octicon-star" data-count-href="/markgoodyear/scrollup/stargazers" data-count-api="/repos/markgoodyear/scrollup#stargazers_count">Star</a>
+                <a class="github-button" href="https://github.com/markgoodyear/scrollup" data-icon="octicon-git-branch" data-count-href="/markgoodyear/scrollup/network" data-count-api="/repos/markgoodyear/scrollup#forks_count">Fork</a>
+                <a class="twitter-share-button" href="https://twitter.com/share"  data-url="http://markgoodyear.com/labs/scrollup" data-text="ScrollUp, a lightweight JavaScript plugin to create a customisable &quot;Scroll to top&quot; feature." data-via="markgdyr" data-size="small">Tweet</a>
+            </div>
+        </div>
+
+        <div class="hero">
+            <div class="container--wide">
+                <h1>ScrollUp <span class="version--major">3</span></h1>
+                <p class="lead">ScrollUp is a lightweight JavaScript plugin to create a customisable "Scroll to top" widget that will work with any website, with ease.</p>
+                <a class="btn btn--large" href="https://github.com/markgoodyear/scrollup"><i class="fa fa-github"></i> Download on GitHub &rarr;</a>
+
+            </div>
         </div>
 
         <div class="container">
-            <h1>
-                scrollUp Demo
-            </h1>
+            <h2>Why use ScrollUp?</h2>
+            <p>With many modern websites, page lengths are growing larger and larger&mdash;especailly parallax based websites. ScrollUp provides an easy way back up for your users.</p>
 
-            <p>See the <a href="https://github.com/markgoodyear/scrollup/blob/master/CHANGELOG.md" target="_blank">scrollUp v2.0.0 changelog</a> for more information.</p>
+            <h2 id="styles">Demo themes</h2>
+            <p>As of v3, ScrollUp doesn't inject any markup or styles, allowing full control how it appears without needing to configure a bunch of options. Add in <a href="http://daneden.github.io/animate.css/">animate.css</a> to create some slick animations, or even create your own.</p>
 
-            <h2>Demo styles</h2>
+            <h3>Example themes:</h3>
             <ul class="themes">
-                <li class="first"><a href="#" class="tab-switch">Tab</a></li>
-                <li><a href="#" class="pill-switch">Pill</a></li>
-                <li><a href="#" class="link-switch">Link</a></li>
-                <li><a href="#" class="image-switch">Image</a></li>
+                <li class=" first"><a class="btn tab-switch" href="?theme=tab">Tab</a></li>
+                <li><a class="btn icon-switch" href="?theme=icon" >Font Icon</a></li>
+                <li><a class="btn link-switch" href="?theme=link" >Link</a></li>
+                <li><a class="btn image-switch" href="?theme=image">Image</a></li>
             </ul>
-            <em class="light">Demo styles can be found in the <code>css/themes/</code> folder.</em>
+            <em class="light">Demo themes can be found in the <code>css/themes/</code> folder.</em>
 
-            <h2>activeOverlay Demo</h2>
-            <p>For demo purposes, toggle the activeOverlay below.</p>
-            <a id="toggleActive">Show activeOverlay</a>
+            <br style="clear:both"></br>
 
-            <div style="clear:both"></div>
+            <h2>Test it out</h2>
+            <p><em>Just keep scrolling... Just keep scrolling...</em></p>
+            <img src="img/reference.jpg" alt="ScrollUp">
 
-            <h2>Dummy content</h2>
-            <p><strong>Dummy content to ensure the page is long enough to scroll on all screen sizes.</strong></p>
+            <h2>Browser Support</h2>
+            <p>ScrollUp uses modern API's and requires IE10+. If you need to support a lower version of IE, shims are available:</p>
+            <ul>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element.classList">ClassList API</a></li>
+                <li><a href="https://github.com/julienetie/request-frame">requestAnimationFrame</a></li>
+            </ul>
 
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+            <h2>Requirements</h2>
+            <p>ScrollUp is dependency free, no requirements necessary.</p>
+
+            <h2>Licence</h2>
+            <p>ScrollUp is licenced under the <a href="http://opensource.org/licenses/mit-license.php">MIT Licence</a>.</p>
+
+            <h2>Share</h2>
+            <p><a class="twitter-share-button" href="https://twitter.com/share"  data-url="http://markgoodyear.com/labs/scrollup" data-text="ScrollUp, a lightweight JavaScript plugin to create a customisable &quot;Scroll to top&quot; feature." data-via="markgdyr" data-size="large">Tweet</a></p>
         </div>
 
+        <script src="../dist/scrollUp.min.js"></script>
+        <script>
+
+            // EXAMPLE OF USAGE:
+            //
+            // ScrollUp.init({
+            //     triggerTemplate: '<a id="scrollup">Back up</a>',
+            //     classes: {
+            //         init: 'animated',
+            //         show: 'flipInX',
+            //         hide: 'fadeOutDown'
+            //     },
+            //     scrollEasing: 'easeInOutCubic',
+            //     onInit: function () {
+            //         // `this` references the element
+            //         console.log(this, 'Init');
+            //     },
+            //     onDestroy: function () {
+            //         // `this` references the element
+            //         console.log(this, 'Destroy');
+            //     }
+            // });
+
+            // DESTROY SCROLLUP
+            //
+            // ScrollUp.destroy();
+        </script>
+
+        <script>
+            /**
+             * Below is to make the site theme switching work and is not relevant for using ScrollUp.
+             */
+            (function () {
+                var elem;
+                var themeStyleElem = document.querySelector('#scrollUpTheme');
+
+                var options = {
+                    scrollEasing: 'easeInOutCube',
+                    scrollDuration: 1000,
+                    classes: {
+                        init: 'animated',
+                        show: 'flipInX',
+                        hide: 'fadeOutDown'
+                    }
+                }
+
+                var getQuery = function (query) {
+                    query = query.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+                    var regex = new RegExp('[\\?&]' + query + '=([^&#]*)');
+                    var results = regex.exec(location.search);
+                    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+                };
+
+                if (getQuery('theme') === 'icon') {
+                    elem = document.querySelector('.icon-switch').classList.add('active');
+                    themeStyleElem.href = 'css/themes/icon.css?3.0.0';
+                    options.triggerTemplate = '<a id="scrollup"><i class="fa fa-hand-o-up"></i></a>',
+                    ScrollUp.init(options);
+
+                } else if (getQuery('theme') === 'link') {
+                    elem = document.querySelector('.link-switch').classList.add('active');
+                    themeStyleElem.href = 'css/themes/link.css?3.0.0';
+                    options.triggerTemplate = '<a id="scrollup">Back to top</i></a>',
+                    ScrollUp.init(options);
+
+                } else if (getQuery('theme') === 'image') {
+                    elem = document.querySelector('.image-switch').classList.add('active');
+                    themeStyleElem.href = 'css/themes/image.css?3.0.0';
+                    options.triggerTemplate = '<a id="scrollup"></a>',
+                    ScrollUp.init(options);
+
+                } else {
+                    elem = document.querySelector('.tab-switch').classList.add('active');
+                    themeStyleElem.href = 'css/themes/tab.css?3.0.0';
+
+                    options.triggerTemplate = '<a id="scrollup">Back to top</a>',
+                    ScrollUp.init(options);
+                }
+            })();
+        </script>
+
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
     </body>
 </html>
