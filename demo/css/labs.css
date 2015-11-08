@@ -168,7 +168,8 @@ p {
     color: #FAEFDE;
 }
 
-#toggleActive {
+#toggleActive,
+#toggleOntopEvent {
     padding: 10px;
     width: 100%;
     text-align: center;
@@ -186,7 +187,8 @@ p {
     border-radius: 6px;
 }
 
-#toggleActive.active {
+#toggleActive.active,
+#toggleOntopEvent.active {
     background-color: #F66169;
     color: #FAEFDE;
 }

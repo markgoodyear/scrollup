@@ -56,15 +56,38 @@ Example: `activeOverlay: '#00FFFF'`. <a href="http://markgoodyear.com/labs/scrol
 New feature in v2.0.0. Display the `scrollUp` element either the set distance from the top (default),
 or from the bottom of the page.
 
+### Events
+
+All events, which plugin provides, concluded in `scrollup` events namespace. Plugin provides following events:
+
+Event             | Description
+-------------     | -------------
+`ontop.scrollup`  | Fires when page completly scroll to top.
+
+For example:
+```js
+$.scrollUp.destroy();
+$(window).on('ontop.scrollup', function() {
+  console.log('On top.');
+});
+```
+You can detach all events for namespace:
+```js
+$(window).off('.scrollup');
+```
+or specify paticular event:
+```js
+$(window).off('ontop.scrollup');
+```
+
 ### Destroy method
 
 New feature in v2.0.0. If you need to destroy the instance of scrollUp,
-simple use the following to remove all modifications to the DOM:
+simple use the following to remove all modifications to the DOM, and detach all events:
 
 ```js
 $.scrollUp.destroy();
 ```
-
 
 ## Fully Customizable
 ScrollUp is fully customisable via CSS which makes it simple to fit right into your project.
