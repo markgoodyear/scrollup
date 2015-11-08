@@ -98,6 +98,20 @@
                         .text(text)
                         .toggleClass('active');
                 });
+
+                $('#toggleOntopEvent').click(function() {
+                    var text = $(this).text() == 'Detach ontop.scrollup event' ? 'Attach ontop.scrollup event' : 'Detach ontop.scrollup event';
+                    $(this)
+                        .text(text)
+                        .toggleClass('active');
+                    if ($(this).hasClass('active')) {
+                        $(window).on('ontop.scrollup', function() {
+                            alert('On top.');
+                        });
+                    } else {
+                        $(window).off('ontop.scrollup');
+                    }
+                });
             });
 
         </script>
@@ -131,6 +145,10 @@
             <a id="toggleActive">Show activeOverlay</a>
 
             <div style="clear:both"></div>
+
+            <h2>Events Demo</h2>
+            <p>For demo purposes, toggle the <code>ontop.scrollup</code> event.</p>
+            <a id="toggleOntopEvent">Attach ontop.scrollup event</a>
 
             <h2>Dummy content</h2>
             <p><strong>Dummy content to ensure the page is long enough to scroll on all screen sizes.</strong></p>

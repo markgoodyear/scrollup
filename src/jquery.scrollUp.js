@@ -99,9 +99,7 @@
                 if (triggerVisible) {
                     $self[animOut](animSpeed);
                     triggerVisible = false;
-                    if (o.onTopHandler && typeof o.onTopHandler == 'function'){
-                      o.onTopHandler();
-                    }
+                    $(window).trigger('ontop.scrollup');
                 }
             }
         });
@@ -142,7 +140,6 @@
         scrollImg: false,            // Set true to use image
         activeOverlay: false,        // Set CSS color to display scrollUp active point, e.g '#00FFFF'
         zIndex: 2147483647,          // Z-Index for the overlay
-        onTopHandler: null           // Performing when page scroll up
     };
 
     // Destroy scrollUp plugin and clean all modifications to the DOM
@@ -154,10 +151,13 @@
         // If 1.7 or above use the new .off()
         if ($.fn.jquery.split('.')[1] >= 7) {
             $(window).off('scroll', scrollEvent);
+            // remove scrollup events namespace
+            $(window).off('.scrollup');
 
         // Else use the old .unbind()
         } else {
             $(window).unbind('scroll', scrollEvent);
+            $(window).unbind('ontop.scrollup');
         }
     };
 
