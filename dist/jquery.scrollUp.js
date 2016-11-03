@@ -31,6 +31,7 @@
         } else {
             $self = $('<a/>', {
                 id: o.scrollName,
+                class: o.scrollClassName,
                 href: '#top'
             });
         }
@@ -132,6 +133,7 @@
     // Defaults
     $.fn.scrollUp.defaults = {
         scrollName: 'scrollUp',      // Element ID
+        scrollClassName: 'scrollUp', // Class name
         scrollDistance: 300,         // Distance from top/bottom before showing element (px)
         scrollFrom: 'top',           // 'top' or 'bottom'
         scrollSpeed: 300,            // Speed back to top (ms)
