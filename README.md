@@ -1,4 +1,4 @@
-# ScrollUp [![Build Status](https://travis-ci.org/markgoodyear/scrollup.svg?branch=master)](https://travis-ci.org/markgoodyear/scrollup) [![devDependency Status](https://david-dm.org/markgoodyear/scrollup/dev-status.svg)](https://david-dm.org/markgoodyear/scrollup#info=devDependencies)
+# ScrollUp [![Build Status](https://travis-ci.org/markgoodyear/scrollup.svg?branch=master)](https://travis-ci.org/markgoodyear/scrollup) [![devDependency Status](https://david-dm.org/markgoodyear/scrollup/dev-status.svg)](https://david-dm.org/markgoodyear/scrollup#info=devDependencies) [![jsDelivr Hits](https://data.jsdelivr.com/v1/package/gh/markgoodyear/scrollup/badge?style=rounded)](https://www.jsdelivr.com/package/gh/markgoodyear/scrollup)
 > A jQuery plugin to create a customisable 'Scroll to top' feature that will work with any website
 
 ## Installing with Bower
