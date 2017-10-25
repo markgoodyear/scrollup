@@ -89,7 +89,7 @@
         }
 
         // Scroll function
-        scrollEvent = $(window).scroll(function () {
+        scrollEvent = $(window).on('scroll', function () {
             if ($(window).scrollTop() > scrollDis) {
                 if (!triggerVisible) {
                     $self[animIn](animSpeed);
@@ -114,7 +114,7 @@
         }
 
         // To the top
-        $self.click(function (e) {
+        $self.on('click', function (e) {
             e.preventDefault();
 
             $('html, body').animate({

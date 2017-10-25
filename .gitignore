@@ -1,5 +1,6 @@
 # System files
 .DS_Store
+.idea
 
 # Node modules
 node_modules

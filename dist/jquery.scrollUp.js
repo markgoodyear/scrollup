@@ -1,5 +1,5 @@
 /*!
- * scrollup v2.4.1
+ * scrollup v2.4.2
  * Url: http://markgoodyear.com/labs/scrollup/
  * Copyright (c) Mark Goodyear — @markgdyr — http://markgoodyear.com
  * License: MIT
@@ -95,7 +95,7 @@
         }
 
         // Scroll function
-        scrollEvent = $(window).scroll(function () {
+        scrollEvent = $(window).on('scroll', function () {
             if ($(window).scrollTop() > scrollDis) {
                 if (!triggerVisible) {
                     $self[animIn](animSpeed);
@@ -120,7 +120,7 @@
         }
 
         // To the top
-        $self.click(function (e) {
+        $self.on('click', function (e) {
             e.preventDefault();
 
             $('html, body').animate({
