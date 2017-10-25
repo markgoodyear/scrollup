@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.4.2
+- remove deprecation showing up in conjunction with jquery.migrate
+  * JQMIGRATE: jQuery.fn.scroll() event shorthand is deprecated
+  * JQMIGRATE: jQuery.fn.click() event shorthand is deprecated
+
 ## 2.4.1
 - Update jQuery dependency
 
