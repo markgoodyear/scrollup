@@ -31,7 +31,9 @@
         } else {
             $self = $('<a/>', {
                 id: o.scrollName,
-                href: '#top'
+                href: '#top',
+                role: "button",
+                "aria-label": `top of page button`
             });
         }
 
